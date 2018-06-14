@@ -1,0 +1,38 @@
+<form name="loginForm" ng-submit="loginCtrl.submitLogin()" novalidate> <!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
+
+
+    <!-- USERNAME -->
+    <div class="form-group">
+        <label>Username:</label>
+        <input type="text" name="username" class="form-control" ng-model="user.username" ng-minlength="3" ng-maxlength="8">
+    </div>
+    <!-- pass -->
+    <div class="form-group">
+        <label>Password:</label>
+        <input type="password" name="password" class="form-control" ng-model="user.password">
+    </div>
+    <!-- first name -->
+    <div class="form-group">
+        <label>First name:</label>
+        <input type="password" name="password" class="form-control" ng-model="user.FirstName">
+    </div>
+    <!-- first name -->
+    <div class="form-group">
+        <label>Last name:</label>
+        <input type="password" name="password" class="form-control" ng-model="user.LastName">
+    </div>
+    <!-- first name -->
+    <div class="form-group">
+        <label>First name:</label>
+        <input type="password" name="password" class="form-control" ng-model="user.FirstName">
+    </div>
+    <!-- first name -->
+    <div class="form-group">
+        <label>First name:</label>
+        <input type="password" name="password" class="form-control" ng-model="user.FirstName">
+    </div>
+
+    <!-- SUBMIT BUTTON -->
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
