@@ -27,6 +27,10 @@
                 background-color: #111;
             }
             </style>
+            <!--   basic angular imports     -->
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+        <script src="./node_modules/angular-local-storage/dist/angular-local-storage.min.js"></script>
     </head>
     <body>
          <!--   our navigator manu    -->
@@ -47,17 +51,16 @@
 
 
 
-        <!--   basic angular imports     -->
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>       
+         
         <!--   our scripts import     -->
         <script src="app.js" ></script>
-        <script src="myCtrl.js" ></script>
-        <script src="components/About/aboutController.js" ></script>
-        <script src="components/POI/poiCtrl.js" ></script>
-
-
-
+        <!-- <script src="myCtrl.js" ></script> -->
+        <script src="./components/About/aboutCtrl.js" ></script>
+        <script src="./components/Login/loginCtrl.js" ></script>
+        <script src="./components/Home/homeCtrl.js"></script>
+        <script src="./components/Register/registerCtrl.js"></script>
+        <script src="./components/Services/localStorageModel.js"></script>
+        <script src="./components/Services/serviceController.js"></script>
  
     </body>
  </html>   

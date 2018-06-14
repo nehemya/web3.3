@@ -1,9 +1,10 @@
-angular.module("poiApp")
+angular.module("citiesApp")
     .service('localStorageModel', ['localStorageService', function(localStorageService) {
 
+        
         var self=this;
 
-        self.addLocalStorage = function (key, value) {
+        self.add = function (key, value) {
             var data = localStorageService.get(key);
             console.log(data);
             if (!data)
@@ -15,16 +16,16 @@ angular.module("poiApp")
                     console.log('failed to add the data');
             }
            
-        }
+        };
 
 
 
-        self.getLocalStorage= function (key)
+        self.get= function (key)
         {
            return  localStorageService.get(key);
         };
 
-        self.updateLocalStorage = function (key,value)
+        self.update = function (key,value)
         {
             localStorageService.remove(key);
             localStorageService.set(key,value);
