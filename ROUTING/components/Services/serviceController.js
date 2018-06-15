@@ -4,7 +4,7 @@ angular.module('citiesApp').service('setHeadersToken', [ '$http', function($http
     this.set = function (t)
     {
         token = t;
-        $http.defualts.headers.common[ 'token' ] = t;
+        $http.defaults.headers.common[ 'token' ] = t;
         console.log("set");
-    }
+    };
 }]);
