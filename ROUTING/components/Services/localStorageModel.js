@@ -3,6 +3,7 @@ angular.module("citiesApp")
 
         
         var self=this;
+        
 
         self.add = function (key, value) {
             var data = localStorageService.get(key);

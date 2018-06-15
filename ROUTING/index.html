@@ -32,13 +32,14 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
         <script src="./node_modules/angular-local-storage/dist/angular-local-storage.min.js"></script>
     </head>
-    <body>
+    <body ng-controller="mainCtrl">
          <!--   our navigator manu    -->
         <ul>
            <li><a class="active" href="#/">Home</a></li>
            <li><a href="#/about">About</a></li>
            <li><a href="#/login">Login</a></li>
            <li><a href="#/register">Register</a></li>
+           <span >Hi {{localStorageModel.currenUser}}</span>
         </ul>
             
         <br>
@@ -61,6 +62,7 @@
         <script src="./components/Register/registerCtrl.js"></script>
         <script src="./components/Services/localStorageModel.js"></script>
         <script src="./components/Services/serviceController.js"></script>
+        <script src="mainCtrl.js" ></script>
  
     </body>
  </html>   

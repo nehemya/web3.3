@@ -5,7 +5,8 @@ angular.module('citiesApp')
         
 
         $scope.submitLogin=function(){
-            self.token=null; //delete the last token if was there
+            self.deleteToken(); //delete the last token if was there
+            setHeadersToken.set("");
             $http.post(server_url + "Users/login", $scope.user) //send the request
             .then(function(response)
             {
@@ -21,7 +22,7 @@ angular.module('citiesApp')
                 }
                 else {
                     self.token = response.data.token;
-                    setHeadersToken.set(self.token);
+                    self.username=$scope.user;
                     self.addToken();
                     alert("success");
                     $location.path('/')
@@ -39,9 +40,21 @@ angular.module('citiesApp')
         self.addToken = function()
         {
             localStorageModel.add('token', self.token);
+            localStorageModel.add('username', self.username.UserName );
+            setHeadersToken.set(self.token); //add to the http req heders
+
         };
 
-        
+        self.deleteToken = function(){
+            if(localStorageModel.get('token')){
+                localStorageModel.update('token', null);
+                localStorageModel.update('username',null);
+            }
+            else{
+                localStorageModel.add('token', null);
+                localStorageModel.add('username',null);
+            }
+        };
 
 
     }]);
