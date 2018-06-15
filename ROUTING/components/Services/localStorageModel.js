@@ -1,4 +1,4 @@
-angular.module("poiApp")
+angular.module("citiesApp")
     .service('localStorageModel', ['localStorageService', function(localStorageService) {
 
         var self=this;
