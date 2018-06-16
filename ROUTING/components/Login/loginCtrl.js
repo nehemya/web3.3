@@ -1,5 +1,6 @@
 angular.module('citiesApp')
-    .controller('loginCtrl', ['$location', '$scope', '$http','setHeadersToken', 'localStorageModel', function ($location, $scope, $http, setHeadersToken, localStorageModel) {
+    .controller('loginCtrl', ['$location', '$scope', '$http','setHeadersToken', 'localStorageModel', 
+    function ($location, $scope, $http, setHeadersToken, localStorageModel) {
         self=this;
         let server_url='http://localhost:3000/';
         
