@@ -1,38 +1,70 @@
-<form name="loginForm" ng-submit="loginCtrl.submitLogin()"> 
+<div ng-controller="registerCtrl" class="content">
+        <form name="registerForm" ng-submit="submitRegister()" novalidate> <!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
+            <div>
+                <label>Username:</label>
+                <input type="text" name="UserName" ng-model="user.UserName" ng-minlength="3" ng-maxlength="8" required>
+            </div>
+
+            <div>
+                <label>Password:</label>
+                <input type="password" name="Password" ng-model="user.Password" ng-minlength="5" ng-maxlength="10" required>
+            </div>
+            
+            <div>
+                <label>First name:</label>
+                <input type="text" name="Fname" ng-model="user.Fname"  required>
+            </div>
+            
+            <div>
+                <label>Last name:</label>
+                <input type="text" name="Lname" ng-model="user.Lname" required>
+            </div>
+            
+            <div>  <!--need to sync with server -->
+                <label>Country:</label>
+                <select name="Country" ng-model="user.country">
+                    <option ng-repeat="country in countryL" value="country">{{country}}</option>
+                </select>
+            </div>
+
+            <div>
+                <label>City:</label>
+                <input type="text" name="city" ng-model="user.City" required>
+            </div>
+          
+            <div>
+                <label>Email:</label>
+                <input type="email" name="Email" ng-model="user.Email" required>
+            </div>
+            
+            <div>  <!--need to sync with server -->
+                <label>Favorit categories:</label>
+                <span ng-repeat="cat in categoryL">
+                    <input type="checkbox" name="category" ng-model="user.categories.cat" value="cat">
+                    <label>{{cat}}</label>
+                </span>
+            </div>
+            
+            <div>
+                    <label>Question 1:</label>
+                    <select name="Q1" ng-model="user.Q1">
+                        <option ng-repeat="q in Q1bank" value="q">{{q}}</option>
+                    </select>
+                    <input type="text" name="Q1ans" ng-model="user.Ans1" required>
+            </div>
+            <div>
+                    <label>Question 2:</label>
+                    <select name="Q2" ng-model="user.Q2">
+                        <option ng-repeat="q in Q2bank" value="q">{{q}}</option>
+                    </select>
+                    <input type="text" name="Q2ans" ng-model="user.Ans2" required>
+            </div>
 
 
-    <!-- USERNAME -->
-    <div class="form-group">
-        <label>Username:</label>
-        <input type="text" name="username" class="form-control" ng-model="user.username" ng-minlength="3" ng-maxlength="8">
-    </div>
-    <!-- pass -->
-    <div class="form-group">
-        <label>Password:</label>
-        <input type="password" name="password" class="form-control" ng-model="user.password">
-    </div>
-    <!-- first name -->
-    <div class="form-group">
-        <label>First name:</label>
-        <input type="password" name="password" class="form-control" ng-model="user.FirstName">
-    </div>
-    <!-- first name -->
-    <div class="form-group">
-        <label>Last name:</label>
-        <input type="password" name="password" class="form-control" ng-model="user.LastName">
-    </div>
-    <!-- first name -->
-    <div class="form-group">
-        <label>First name:</label>
-        <input type="password" name="password" class="form-control" ng-model="user.FirstName">
-    </div>
-    <!-- first name -->
-    <div class="form-group">
-        <label>First name:</label>
-        <input type="password" name="password" class="form-control" ng-model="user.FirstName">
-    </div>
 
-    <!-- SUBMIT BUTTON -->
-    <button type="submit" class="btn btn-primary">Submit</button>
-
-</form>
+            
+        
+            <button type="submit">Submit</button>
+        
+        </form>
+    </div>

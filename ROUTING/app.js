@@ -20,7 +20,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
         })
         .when('/register', {
             templateUrl: 'components/Register/register.html',
-            controller : 'RegisterCtrl'
+            controller : 'registerCtrl'
         })
         .otherwise({ redirectTo: '/' });
 }]);

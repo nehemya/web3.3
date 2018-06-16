@@ -7,33 +7,33 @@ angular.module('citiesApp')
         $scope.submitLogin=function(){
             self.deleteToken(); //delete the last token if was there
             setHeadersToken.set("");
+            $scope.$parent.$parent.isLogged=false;
+
             $http.post(server_url + "Users/login", $scope.user) //send the request
             .then(function(response)
             {
                 if(response.data=="login failed bad username"){
                     alert("login failed bad username");
-                    $scope.user.UserName="";
-                    $scope.user.Password="";
+                    
                 }
                 else if(response.data=="login failed bad password/username"){
                     alert("login failed bad password/username");
-                    $scope.user.UserName="";
-                    $scope.user.Password="";
+                   
                 }
                 else {
-                    self.token = response.data.token;
+                    self.token = response.data;
                     self.username=$scope.user;
+                    $scope.$parent.$parent.username=self.username.UserName;
+                    $scope.$parent.$parent.isLogged=true;
                     self.addToken();
                     alert("success");
-                    $location.path('/')
+                    $location.path('/');
                 }
                 
             }, function(response) //only if the server fails to return anything
             {
-                alert("Couldn't login");
-                $scope.user.UserName="";
-                $scope.user.Password="";
-            });
+                alert("Connection problem with the back-end server");
+             });
                 
         };
 

@@ -1,46 +1,37 @@
 
 <html ng-app="citiesApp">
     <head><title>Cities App</title>
-        <!--   todo: move to different css file    -->
-        <style>
-            ul {
-                list-style-type: none;
-                margin: 0;
-                padding: 0;
-                overflow: hidden;
-                background-color: #333;
-            }
-            
-            li {
-                float: left;
-            }
-            
-            li a {
-                display: block;
-                color: white;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration: none;
-            }
-            
-            li a:hover {
-                background-color: #111;
-            }
-            </style>
-            <!--   basic angular imports     -->
-            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+              
+        <link rel="stylesheet" type="text/css" href="appStyle.css" />
+        <!--   basic angular imports     -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
         <script src="./node_modules/angular-local-storage/dist/angular-local-storage.min.js"></script>
+        <!--   our scripts import     -->
+        <script src="app.js" ></script>
+        <!-- <script src="myCtrl.js" ></script> -->
+        <script src="mainCtrl.js" ></script>
+        <script src="./components/About/aboutCtrl.js" ></script>
+        <script src="./components/Login/loginCtrl.js" ></script>
+        <script src="./components/Home/homeCtrl.js"></script>
+        <script src="./components/Register/registerCtrl.js"></script>
+        <script src="./components/Services/localStorageModel.js"></script>
+        <script src="./components/Services/serviceController.js"></script>
+        
     </head>
     <body ng-controller="mainCtrl">
          <!--   our navigator manu    -->
-        <ul>
-           <li><a class="active" href="#/">Home</a></li>
-           <li><a href="#/about">About</a></li>
-           <li><a href="#/login">Login</a></li>
-           <li><a href="#/register">Register</a></li>
-           <span >Hi {{localStorageModel.currenUser}}</span>
-        </ul>
+        <div id="menu-bar">
+            <ul >
+                <li><a class="active" href="#/">Home</a></li>
+                <li><a href="#/about">About</a></li>
+                <li><a href="#/login">Login</a></li>
+                <li><a href="#/register">Register</a></li>
+                <li ng-show="isLogged" >Hello {{username}} (*_*)</li>
+                <li ng-show="!isLogged" >Hello guest</li>
+            </ul>
+        </div>
+        
             
         <br>
         <br>
@@ -53,16 +44,7 @@
 
 
          
-        <!--   our scripts import     -->
-        <script src="app.js" ></script>
-        <!-- <script src="myCtrl.js" ></script> -->
-        <script src="./components/About/aboutCtrl.js" ></script>
-        <script src="./components/Login/loginCtrl.js" ></script>
-        <script src="./components/Home/homeCtrl.js"></script>
-        <script src="./components/Register/registerCtrl.js"></script>
-        <script src="./components/Services/localStorageModel.js"></script>
-        <script src="./components/Services/serviceController.js"></script>
-        <script src="mainCtrl.js" ></script>
+        
  
     </body>
  </html>   

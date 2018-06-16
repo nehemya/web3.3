@@ -1,1 +1,21 @@
-<p>wannabe hoem</p>
+<div ng-controller="homeCtrl" class="content">
+    <!--this will apear for not logged users-->
+    <div ng-show="!isLogged">
+        <h1>Hello user, welcome to our new tour application. <br>
+            Please log in for maximum enjoyment.
+        </h1>
+        <input type="button" value="Login" ng-click="moveLog()">
+        <input type="button" value="Register" ng-click="moveReg()">
+
+        <hr>
+
+        <div ng-repeat="poi in pois | filter: randFilter">
+            <h2>{{poi.PoiName}}</h2>
+            <!-- <img src="poi.PoiPic" alt="">            we have to add picturs-->
+        </div>
+    </div>
+    <div ng-show="isLogged">
+
+    </div>
+</div>
+
