@@ -21,7 +21,13 @@ angular.module("citiesApp")
         };
 
         self.homePrep = function(){
-            setHeadersToken.set(localStorageModel.get('token'));
+            if(localStorageModel.get('token')==null){
+                setHeadersToken.set("");
+            }
+            else{
+               setHeadersToken.set(localStorageModel.get('token')); 
+            }
+            
             return $http.get(server_url + "POI/",{params:{poiName:"All"} } )
             .then(function(response)
             {
@@ -49,7 +55,12 @@ angular.module("citiesApp")
         };
 
         self.LogPopCat = function(){
-            setHeadersToken.set(localStorageModel.get('token'));
+            if(localStorageModel.get('token')==null){
+                setHeadersToken.set("");
+            }
+            else{
+               setHeadersToken.set(localStorageModel.get('token')); 
+            }
             return $http.get(server_url + "POI/popularCategory")
                 .then(function(response){
                     self.popCat[0] = response.data[0][0];
@@ -63,7 +74,12 @@ angular.module("citiesApp")
         };
 
         self.logHistory = function(){
-            setHeadersToken.set(localStorageModel.get('token'));
+            if(localStorageModel.get('token')==null){
+                setHeadersToken.set("");
+            }
+            else{
+               setHeadersToken.set(localStorageModel.get('token')); 
+            }
             return $http.get(server_url + "POI/save/userLast2")
                 .then(function(response){
                     self.last2Hist[0] = response.data[0];
