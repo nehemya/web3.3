@@ -1,6 +1,6 @@
 <div ng-controller="homeCtrl" class="content">
     <!--this will apear for not logged users-->
-    <div ng-show="!isLogged">
+    <div >
         <h1>Hello user, welcome to our new tour application. <br>
             Please log in for maximum enjoyment.
         </h1>
@@ -9,12 +9,12 @@
 
         <hr>
 
-        <div ng-repeat="poi in pois | filter: randFilter">
+        <div ng-repeat="poi in randPois ">
             <h2>{{poi.PoiName}}</h2>
             <!-- <img src="poi.PoiPic" alt="">            we have to add picturs-->
         </div>
     </div>
-    <div ng-show="isLogged">
+    
 
     </div>
 </div>

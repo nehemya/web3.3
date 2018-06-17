@@ -1,6 +1,7 @@
 var app = angular.module('citiesApp', ["ngRoute", "LocalStorageModule"]);
 
-app.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider)  {
+app.config(['$locationProvider', '$routeProvider',
+function($locationProvider, $routeProvider)  {
 
 
     $locationProvider.hashPrefix('');
@@ -8,8 +9,19 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
 
     $routeProvider.when('/', {
         templateUrl: 'components/Home/home.html',
-        controller:'homeCtrl'
+        controller:'homeCtrl',
+        resolve: {
+                homePrep: function(PoiService){
+                    return PoiService.homePrep();
+                }
+            }
     })
+        /*
+        .when('/logHome', {
+            templateUrl: 'components/LogHome/logHome.html',
+            controller : 'logHomeCtrl'
+            
+        })*/ 
         .when('/about', {
             templateUrl: 'components/About/about.html',
             controller : 'aboutCtrl'
