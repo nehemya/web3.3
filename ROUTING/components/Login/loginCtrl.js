@@ -28,7 +28,7 @@ angular.module('citiesApp')
                     $scope.$parent.$parent.isLogged=true;
                     self.addToken();
                     alert("success");
-                    $location.path('/');
+                    $location.path('/logHome');
                 }
                 
             }, function(response) //only if the server fails to return anything

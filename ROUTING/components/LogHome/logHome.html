@@ -1,0 +1,23 @@
+<div ng-controller="logHomeCtrl" class="content">
+        <!--this will apear for not logged users-->
+        <div >
+            <h1>Point of interest that might interest you:</h1>
+            <div ng-repeat="poi in fav2Pois">
+                    <h2>{{poi.PoiName}}</h2>
+                    <!-- <img src="poi.PoiPic" alt="">            we have to add picturs-->
+                </div>  
+    
+            <hr>
+
+            <h1>Favorite history:</h1>
+            <div ng-repeat="poi in Hist">
+                <h2>{{poi.PoiName}}</h2>
+                <!-- <img src="poi.PoiPic" alt="">            we have to add picturs-->
+            </div>
+        </div>
+        
+    
+        </div>
+    </div>
+    
+    
