@@ -13,11 +13,11 @@ angular.module('citiesApp')
             $http.post(server_url + "Users/login", $scope.user) //send the request
             .then(function(response)
             {
-                if(response.data=="login failed bad username"){
+                if(response.data==="login failed bad username"){
                     alert("login failed bad username");
                     
                 }
-                else if(response.data=="login failed bad password/username"){
+                else if(response.data==="login failed bad password/username"){
                     alert("login failed bad password/username");
                    
                 }
