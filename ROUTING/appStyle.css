@@ -6,6 +6,18 @@ body{
   h1,h2,h3{
     margin: 0;
   }
+
+  small
+  {
+    color: red;
+    display: block;
+    text-align: center;
+  }
+
+  input[disabled="disabled"]{
+    opacity: 0.4;
+    cursor: not-allowed !important; 
+  }
   
   .belt{
     padding: 5px 10px;

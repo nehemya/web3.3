@@ -1,18 +1,23 @@
 
 <div ng-controller="loginCtrl" class="content">
     <form name="loginForm" ng-submit="submitLogin()" novalidate> <!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
-
         <div>
             <label>Username:</label>
-            <input type="text" name="UserName" ng-model="user.UserName" ng-minlength="3" ng-maxlength="8" required>
+            <input type="text" name="UserName" ng-model="user.UserName" ng-required="true" />
+            <div ng-show="loginForm.UserName.$touched && loginForm.UserName.$invalid">
+                <small>Enter valid Username</small>
+            </div>
         </div>
  
         <div>
             <label>Password:</label>
-            <input type="password" name="Password" ng-model="user.Password" required>
+            <input type="password" name="Password" ng-model="user.Password" ng-required="true" />
+            <div ng-show="loginForm.Password.$touched && loginForm.Password.$invalid">
+                <small>Enter valid Password</small>
+            </div>
         </div>
     
-        <button type="submit">Submit</button>
+        <input type="submit" value="Submit" ng-disabled="loginForm.$invalid" />
     
     </form>
 </div>
