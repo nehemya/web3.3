@@ -8,29 +8,20 @@ function($locationProvider, $routeProvider)  {
 
 
     $routeProvider.when('/', {
-            templateUrl: 'components/Home/home.html',
-            controller:'homeCtrl',
-            resolve: {
-                    homePrep: function(PoiService){
-                        return PoiService.homePrep();
-                    }                    
+        templateUrl: 'components/Home/home.html',
+        controller:'homeCtrl',
+        resolve: {
+                homePrep: function(PoiService){
+                    return PoiService.homePrep();
                 }
-        })
-        
+            }
+    })
+        /*
         .when('/logHome', {
             templateUrl: 'components/LogHome/logHome.html',
-            controller : 'logHomeCtrl',
-            resolve: {
-                popCat: function(PoiService){
-                    return PoiService.LogPopCat();
-                },
-                logHist: function(PoiService){
-                    return PoiService.logHistory();
-                }
-
-            }
+            controller : 'logHomeCtrl'
             
-        }) 
+        })*/ 
         .when('/about', {
             templateUrl: 'components/About/about.html',
             controller : 'aboutCtrl'
@@ -41,7 +32,12 @@ function($locationProvider, $routeProvider)  {
         })
         .when('/register', {
             templateUrl: 'components/Register/register.html',
-            controller : 'registerCtrl'
+            controller : 'registerCtrl',
+            resolve: {
+                loginPrep: function (loginService) { 
+                    return loginService.loginPrep();
+                 }
+            }
         })
         .otherwise({ redirectTo: '/' });
 }]);

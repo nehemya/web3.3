@@ -19,7 +19,7 @@ angular.module("citiesApp")
                 alert("Connection problem with the back-end server");
             });
         };
-
+    
         self.homePrep = function(){
             setHeadersToken.set(localStorageModel.get('token'));
             return $http.get(server_url + "POI/",{params:{poiName:"All"} } )

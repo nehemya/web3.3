@@ -28,7 +28,7 @@ angular.module('citiesApp')
                     $scope.$parent.$parent.isLogged=true;
                     self.addToken();
                     alert("success");
-                    $location.path('/logHome');
+                    $location.path('/');
                 }
                 
             }, function(response) //only if the server fails to return anything
@@ -57,5 +57,6 @@ angular.module('citiesApp')
             }
         };
 
+        
 
     }]);
