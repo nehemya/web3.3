@@ -2,10 +2,7 @@
   "requires": true,
   "lockfileVersion": 1,
   "dependencies": {
-    "angular-local-storage": "^0.7.1",
-    "lite-server": "^2.3.0"
-  },
-  "scripts": {
-    "dev": "lite-server"
+    "angular-local-storage": "^0.7.1"
   }
+
 }
