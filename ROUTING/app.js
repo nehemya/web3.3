@@ -8,20 +8,29 @@ function($locationProvider, $routeProvider)  {
 
 
     $routeProvider.when('/', {
-        templateUrl: 'components/Home/home.html',
-        controller:'homeCtrl',
-        resolve: {
-                homePrep: function(PoiService){
-                    return PoiService.homePrep();
+            templateUrl: 'components/Home/home.html',
+            controller:'homeCtrl',
+            resolve: {
+                    homePrep: function(PoiService){
+                        return PoiService.homePrep();
+                    }                    
                 }
-            }
-    })
-        /*
+        })
+        
         .when('/logHome', {
             templateUrl: 'components/LogHome/logHome.html',
-            controller : 'logHomeCtrl'
+            controller : 'logHomeCtrl',
+            resolve: {
+                popCat: function(PoiService){
+                    return PoiService.LogPopCat();
+                },
+                logHist: function(PoiService){
+                    return PoiService.logHistory();
+                }
+
+            }
             
-        })*/ 
+        }) 
         .when('/about', {
             templateUrl: 'components/About/about.html',
             controller : 'aboutCtrl'
