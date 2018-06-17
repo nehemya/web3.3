@@ -37,11 +37,17 @@ function($locationProvider, $routeProvider)  {
         })
         .when('/login', {
             templateUrl: 'components/Login/login.html',
-            controller : 'loginCtrl'
+            controller : 'loginCtrl',
+           
         })
         .when('/register', {
             templateUrl: 'components/Register/register.html',
-            controller : 'registerCtrl'
+            controller : 'registerCtrl',
+            resolve: {
+                registerPrep: function(RegisterService){
+                    return RegisterService.registerPrep();
+                }
+            }
         })
         .otherwise({ redirectTo: '/' });
 }]);

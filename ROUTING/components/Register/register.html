@@ -60,10 +60,10 @@
                 <small>Last name can contain only letters and whitespaces</small>
             </div>
             
-            <div>  <!--need to sync with server -->
+            <div>  
                 <label>Country:</label>
-                <select name="Country" ng-model="user.country">
-                    <option ng-repeat="country in countryL" value="country">{{country}}</option>
+                <select name="Country" ng-model="user.Country">
+                    <option ng-repeat="country in countryL" value="{{country}}">{{country}}</option>
                 </select>
             </div>
 
@@ -77,27 +77,28 @@
                 <input type="email" name="Email" ng-model="user.Email" required>
             </div>
             
-            <div>  <!--need to sync with server -->
-                <label>Favorit categories:</label>
-                <span ng-repeat="cat in categoryL">
-                    <input type="checkbox" name="category" ng-model="user.categories.cat" value="cat">
+            <div>  
+                <label>Favorite categories:</label>
+                <div ng-repeat="cat in categoryL">
+                    <input type="checkbox" id="{{cat}}" ng-click="registerCtrl.selectCat(cat)" ng-required="registerCtrl.user.Categories.length >= 2" />
                     <label>{{cat}}</label>
-                </span>
+
+                </div>
             </div>
             
             <div>
                     <label>Question 1:</label>
-                    <select name="Q1" ng-model="user.Q1">
+                    <select name="Q1" ng-model="user.QPassword1">
                         <option ng-repeat="q in Q1bank" value="q">{{q}}</option>
                     </select>
-                    <input type="text" name="Q1ans" ng-model="user.Ans1" required>
+                    <input type="text" name="Q1ans" ng-model="user.Answer1" required>
             </div>
             <div>
                     <label>Question 2:</label>
-                    <select name="Q2" ng-model="user.Q2">
+                    <select name="Q2" ng-model="user.QPassword2">
                         <option ng-repeat="q in Q2bank" value="q">{{q}}</option>
                     </select>
-                    <input type="text" name="Q2ans" ng-model="user.Ans2" required>
+                    <input type="text" name="Q2ans" ng-model="user.Answer2" required>
             </div>
      
         
