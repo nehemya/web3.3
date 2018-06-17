@@ -18,6 +18,15 @@ body{
     opacity: 0.4;
     cursor: not-allowed !important; 
   }
+
+  input.ng-touched.ng-valid{
+    border-color: green;
+  }
+  
+  input.ng-touched.ng-invalid{
+    border-color: red;
+  }
+ 
   
   .belt{
     padding: 5px 10px;
