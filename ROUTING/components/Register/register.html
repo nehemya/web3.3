@@ -38,7 +38,7 @@
             
             <div>
                 <label>First name:</label>
-                <input type="text" name="Fname" ng-model="user.Fname"  ng-required="true" ng-pattern="/^[a-z ,.'-]+$/i">
+                <input type="text" name="Fname" ng-model="user.FirstName"  ng-required="true" ng-pattern="/^[a-z ,.'-]+$/i">
             </div>
             <!-- Set error messages for First Name field -->
             <div ng-show="registerForm.Fname.$error.required && registerForm.Fname.$touched">
@@ -50,7 +50,7 @@
             
             <div>
                 <label>Last name:</label>
-                <input type="text" name="Lname" ng-model="user.Lname" required ng-pattern="/^[a-z ,.'-]+$/i">
+                <input type="text" name="Lname" ng-model="user.LastName" required ng-pattern="/^[a-z ,.'-]+$/i">
             </div>
             <!-- Set error messages for First Name field -->
             <div ng-show="registerForm.Lname.$error.required && registerForm.Lname.$touched">
@@ -62,7 +62,7 @@
             
             <div>  <!--need to sync with server -->
                 <label>Country:</label>
-                <select name="Country" ng-model="user.country">
+                <select name="Country" ng-model="user.Country">
                     <option ng-repeat="country in countryL" value="country">{{country}}</option>
                 </select>
             </div>
@@ -90,14 +90,14 @@
                     <select name="Q1" ng-model="user.Q1">
                         <option ng-repeat="q in Q1bank" value="q">{{q}}</option>
                     </select>
-                    <input type="text" name="Q1ans" ng-model="user.Ans1" required>
+                    <input type="text" name="Q1ans" ng-model="user.Answer1" required>
             </div>
             <div>
                     <label>Question 2:</label>
                     <select name="Q2" ng-model="user.Q2">
                         <option ng-repeat="q in Q2bank" value="q">{{q}}</option>
                     </select>
-                    <input type="text" name="Q2ans" ng-model="user.Ans2" required>
+                    <input type="text" name="Q2ans" ng-model="user.Answer2" required>
             </div>
      
         

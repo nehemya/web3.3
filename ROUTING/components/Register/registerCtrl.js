@@ -2,6 +2,7 @@ angular.module('citiesApp')
     .controller('registerCtrl', ['$location', '$scope', '$http', 'localStorageModel',
      function ($location, $scope, $http, localStorageModel) {
         self=this;
+        let server_url='http://localhost:3000/';
         $scope.countryL = ['1','2','3','4','5','6','7']; // need to sync
         $scope.categoryL = ['cat 1','cat 2','cat 3','cat 4','cat 5','cat 6','cat 7']; // need to sync
         $scope.Q1bank = ['What is your mother\'s name?', 'What was your first car?'];
@@ -10,7 +11,14 @@ angular.module('citiesApp')
 
 
         $scope.submitRegister = function(){
-            //todo: register func
+            $http.post(server_url + "Users/addUser", $scope.user)
+            .then(function(response){
+                if(response.status === 200)
+                {
+                    alert("success");
+                    $location.path('/');
+                }
+            });
         };
 
         
