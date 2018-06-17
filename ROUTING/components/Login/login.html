@@ -32,9 +32,10 @@
                <small>Password is too long</small>
            </div>
            <div ng-show="loginForm.Password.$error.pattern">
-               <small>Password can contains only letters and numbers </small>
+               <small>Password can contains letters and numbers </small>
            </div>
         </div>
+
     
         <input type="submit" value="Submit" ng-disabled="loginForm.$invalid" />
     
