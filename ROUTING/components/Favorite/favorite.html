@@ -1,0 +1,25 @@
+<div ng-controller="favoriteCtrl" class="content">
+    <table>
+        <thead>
+            <tr>
+                <td>POI name:</td>
+                <td>Category:</td>
+                <td>Rating:</td>
+                <td>Change Order</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="poi in savedPOI" ng-click="" id="{{poi}}">
+                <td>{{poi.PoiName}}</td>
+                <td>{{poi.Category}}</td>
+                <td>{{poi.Rating}}</td>
+                <td>
+                    <button ng-click="moveUp($index)">Move Up</button>
+                    <button ng-click="moveDown($index)">Move Down</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button ng-click="sendToServer">Save Changes</button>
+</div>

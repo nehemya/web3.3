@@ -36,7 +36,6 @@ angular.module('citiesApp')
                {
                    let cat = $scope.categoryL[i];
                    let element = document.getElementById(cat);
-                   //let wrappedElement = angular.element(element);
                    if (element.checked)
                    {
                        self.Categories.push(cat);

@@ -49,5 +49,14 @@ function($locationProvider, $routeProvider)  {
                 }
             }
         })
+        .when('/favorite', {
+            templateUrl: 'components/Favorite/favorite.html',
+            controller : 'favoriteCtrl',
+            resolve: {
+                favoritePrep: function(FavoriteService){
+                    return FavoriteService.favoritePrep();
+                }
+            }
+        })
         .otherwise({ redirectTo: '/' });
 }]);

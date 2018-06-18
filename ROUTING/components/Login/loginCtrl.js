@@ -29,6 +29,7 @@ angular.module('citiesApp')
                     self.addToken();
                     alert("success");
                     $location.path('/logHome');
+                    return response;
                 }
                 
             }, function(response) //only if the server fails to return anything
