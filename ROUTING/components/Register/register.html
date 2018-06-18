@@ -38,7 +38,7 @@
             
             <div>
                 <label>First name:</label>
-                <input type="text" name="Fname" ng-model="user.Fname"  ng-required="true" ng-pattern="/^[a-z ,.'-]+$/i">
+                <input type="text" name="Fname" ng-model="user.FirstName"  ng-required="true" ng-pattern="/^[a-z ,.'-]+$/i">
             </div>
             <!-- Set error messages for First Name field -->
             <div ng-show="registerForm.Fname.$error.required && registerForm.Fname.$touched">
@@ -50,7 +50,7 @@
             
             <div>
                 <label>Last name:</label>
-                <input type="text" name="Lname" ng-model="user.Lname" required ng-pattern="/^[a-z ,.'-]+$/i">
+                <input type="text" name="Lname" ng-model="user.LastName" required ng-pattern="/^[a-z ,.'-]+$/i">
             </div>
             <!-- Set error messages for First Name field -->
             <div ng-show="registerForm.Lname.$error.required && registerForm.Lname.$touched">
@@ -69,18 +69,27 @@
 
             <div>
                 <label>City:</label>
-                <input type="text" name="city" ng-model="user.City" required>
+                <input type="text" name="city" ng-model="user.City" ng-required="true">
+            </div>
+            <div ng-show="registerForm.city.$error.required && registerForm.city.$touched">
+                <small>City is required</small>
             </div>
           
             <div>
                 <label>Email:</label>
-                <input type="email" name="Email" ng-model="user.Email" required>
+                <input type="email" name="Email" ng-model="user.Email" ng-required="ture">
+            </div>
+            <div ng-show="registerForm.Email.$error.required && registerForm.Email.$touched">
+                <small>City is required</small>
+            </div>
+            <div ng-show="registerForm.Email.$invalid && registerForm.Email.$touched">
+                <small>Enter a valid Email</small>
             </div>
             
             <div>  
                 <label>Favorite categories:</label>
                 <div ng-repeat="cat in categoryL">
-                    <input type="checkbox" id="{{cat}}" ng-click="registerCtrl.selectCat(cat)" ng-required="registerCtrl.user.Categories.length >= 2" />
+                    <input type="checkbox" id="{{cat}}" ng-model="selected[cat]"   />
                     <label>{{cat}}</label>
 
                 </div>
