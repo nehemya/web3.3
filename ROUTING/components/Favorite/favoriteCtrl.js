@@ -1,5 +1,5 @@
 angular.module('citiesApp')
-    .controller('favoriteCtrl', ['$location', '$scope', '$http', 'localStorageModel', 'FavoriteService', 
+    .controller('favoriteCtrl', ['$location', '$scope', '$http', 'localStorageModel', 'FavoriteService',
     function ($location, $scope, $http, localStorageModel, FavoriteService) { 
 
         let self = this;
@@ -29,7 +29,7 @@ angular.module('citiesApp')
                 FavoriteService.loclaData = $scope.savedPOI;
             }
         };
-/*
+
         $scope.saveChanges = function()
         {
             for (let i = 0; i < $scope.savedPOI.length; i++)
@@ -72,6 +72,5 @@ angular.module('citiesApp')
                 }
             }
           };
-        
-   */     
+           
      }]);

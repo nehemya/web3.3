@@ -31,15 +31,10 @@
             <ul >
                 <li><a class="active" href="#/">Home</a></li>
                 <li><a href="#/about">About</a></li>
-<<<<<<< HEAD
                 <li><a href="#/explore">Explore</a></li>
-                <li><a href="#/login">Login</a></li>
-                <li><a href="#/register">Register</a></li>
-=======
                 <li ng-show="!isLogged"><a href="#/login">Login</a></li>
                 <li ng-show="!isLogged"><a href="#/register">Register</a></li>
                 <li ng-show"isLogged" ><a href="#/favorite">Favorites</a></li>
->>>>>>> e88c20c476aeecab9ccb9e49737f540ddf9d0153
                 <li ng-show="isLogged" >Hello {{username}} (*_*)</li>
                 <li ng-show="!isLogged" >Hello guest</li>
             </ul>
