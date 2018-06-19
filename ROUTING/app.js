@@ -58,5 +58,14 @@ function($locationProvider, $routeProvider)  {
                 }
             }
         })
+        .when('/explore', {
+            templateUrl: 'components/PoiTable/poiTable.html',
+            controller : 'poiTableCtrl',
+            resolve: {
+                Pois: function(PoiService){
+                    return PoiService.getAllPoi();
+                }
+            }
+        })
         .otherwise({ redirectTo: '/' });
 }]);

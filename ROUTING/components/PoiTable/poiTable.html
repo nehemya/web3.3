@@ -1,0 +1,12 @@
+<div ng-controller="poiTableCtrl" class="content">
+    <button ng-click="order = 'Category'">Order by category</button>
+    <button ng-click="order = 'Rating'">Order by rating</button>
+    <input type="text" ng-model="search" placeholder="Search for POI">
+
+    <table>
+        <tr><th>Name</th><th>Category</th><th>Rating</th></tr>
+        
+        <tr ng-repeat="p in Pois | orderBy: order | filter: search">
+            <td>{{p.PoiName}}</td><td>{{p.Category}}</td><td>{{p.Rating}}</td></tr>
+    </table>
+</div>
