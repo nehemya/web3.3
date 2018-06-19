@@ -32,6 +32,4 @@ angular.module("citiesApp")
             localStorageService.set(key,value);
         };
 
-
-
 }]);

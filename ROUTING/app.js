@@ -37,11 +37,26 @@ function($locationProvider, $routeProvider)  {
         })
         .when('/login', {
             templateUrl: 'components/Login/login.html',
-            controller : 'loginCtrl'
+            controller : 'loginCtrl',
+           
         })
         .when('/register', {
             templateUrl: 'components/Register/register.html',
-            controller : 'registerCtrl'
+            controller : 'registerCtrl',
+            resolve: {
+                registerPrep: function(RegisterService){
+                    return RegisterService.registerPrep();
+                }
+            }
+        })
+        .when('/favorite', {
+            templateUrl: 'components/Favorite/favorite.html',
+            controller : 'favoriteCtrl',
+            resolve: {
+                favoritePrep: function(FavoriteService){
+                    return FavoriteService.favoritePrep();
+                }
+            }
         })
         .when('/explore', {
             templateUrl: 'components/PoiTable/poiTable.html',
