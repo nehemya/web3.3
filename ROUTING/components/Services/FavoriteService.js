@@ -2,28 +2,28 @@ angular.module('citiesApp').service('FavoriteService', ['$http', 'localStorageMo
 
     var self = this;
     let server_url = 'http://localhost:3000/';
-    self.serverData = {};
+    self.serverData = [];
+    self.loclaData = [];
 
     self.favoritePrep = function()
     {
+        if(localStorageModel.get('token')==null){
+            setHeadersToken.set("");
+        }
+        else{
+           setHeadersToken.set(localStorageModel.get('token')); 
+        }
         return $http.get(server_url + 'POI/save')
         .then(function(response){
-            let data = localStorageModel.get('favorite');
-            if (!data)
-            {
-                self.serverData = response.data;
-                localStorageModel.add('favorite', response.data);
-                return response;
-            }
-            else
-            {
-                localStorageModel.update('favorite', response.data);
-                return response;
-            }
+            
+            self.serverData = response.data;
+            self.loclaData = response.data;
+            return response;
         }), function(response)
         {
             alert("Connection problem with the back-end server");
             return response;
         };
     };
+
 }]);
