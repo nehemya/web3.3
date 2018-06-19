@@ -8,6 +8,27 @@ angular.module('citiesApp')
         self.serverData = FavoriteService.serverData;
        
 
+        $scope.saveChanges = function()
+        {
+            for (let i = 0; i < $scope.savedPOI.length; i++)
+            {
+                $scope.savedPOI[i].place = i + 1;
+            }      
+
+            self.deleteFromServer();
+            self.addToServer();
+            let data = {};
+            data.pois = $scope.savedPOI;
+            $http.post(server_url + 'POI/save', data)
+            .then(function(response){
+                alert('Success');
+                return;
+            }, function (param) {
+                alert("Connection problem with the back-end server");
+                return;
+              });
+        };
+
         $scope.moveUp = function(index)
         {
             if (index > 0)
@@ -30,31 +51,14 @@ angular.module('citiesApp')
             }
         };
 
-        $scope.saveChanges = function()
-        {
-            for (let i = 0; i < $scope.savedPOI.length; i++)
-            {
-                $scope.savedPOI[i].place = i;
-            }      
-
-            self.deleteFromServer();
-            self.addToServer();
-            $http.post(server_url + 'POI/save', $scope.savedPOI)
-            .then(function(response){
-                alert('Success');
-                return;
-            }, function (param) {
-                alert("Connection problem with the back-end server");
-                return;
-              });
-        };
+       
 
         self.deleteFromServer = function()
         {
             for (let i = 0; i < self.serverData.length; i++)
             {
                 let poi = self.serverData[i];
-                if (-1 === $scope.indexOf(poi))
+                if (-1 === $scope.savedPOI.indexOf(poi))
                 {
                     $http.delete(server_url + 'POI/save', poi);
                 }

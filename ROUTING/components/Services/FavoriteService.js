@@ -14,18 +14,21 @@ angular.module('citiesApp').service('FavoriteService', ['$http', 'localStorageMo
         else{
            setHeadersToken.set(localStorageModel.get('token')); 
         }
-        
-        return $http.get(server_url + 'POI/save')
-        .then(function(response){
-            
-            self.serverData = response.data;
-            self.loclaData = response.data;
-            return response.data;
-        }, function(response)
+        if (self.serverData.length === 0)
         {
-            alert("Connection problem with the back-end server");
-            return response;
-        });
+            return $http.get(server_url + 'POI/save')
+            .then(function(response){
+                
+                self.serverData = response.data;
+                self.loclaData = response.data;
+                return response.data;
+            }, function(response)
+            {
+                alert("Connection problem with the back-end server");
+                return response;
+            }); 
+        }
+        
     };
 
 }]);
