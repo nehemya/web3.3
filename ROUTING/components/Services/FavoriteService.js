@@ -2,6 +2,7 @@ angular.module('citiesApp').service('FavoriteService', ['$http', 'localStorageMo
 
     var self = this;
     let server_url = 'http://localhost:3000/';
+    self.serverData = {};
 
     self.favoritePrep = function()
     {
@@ -10,6 +11,7 @@ angular.module('citiesApp').service('FavoriteService', ['$http', 'localStorageMo
             let data = localStorageModel.get('favorite');
             if (!data)
             {
+                self.serverData = response.data;
                 localStorageModel.add('favorite', response.data);
                 return response;
             }

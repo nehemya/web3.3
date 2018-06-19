@@ -1,12 +1,11 @@
 angular.module('citiesApp')
-    .controller('favoriteCtrl', ['$location', '$scope', '$http', 'localStorageModel', 
-    function ($location, $scope, $http, localStorageModel) { 
+    .controller('favoriteCtrl', ['$location', '$scope', '$http', 'localStorageModel', 'FavoriteService', 
+    function ($location, $scope, $http, localStorageModel, FavoriteService) { 
 
         let self = this;
         let server_url='http://localhost:3000/';
         $scope.savedPOI = localStorageModel.get('favorite');
-        let numOfPOI = $scope.savedPOI.length;
-        
+        self.serverData = FavoriteService.serverData;
        
 
         $scope.moveUp = function(index)
@@ -16,6 +15,7 @@ angular.module('citiesApp')
                 let rowToSwap = $scope.savedPOI[index - 1];
                 $scope.savedPOI[index - 1] = $scope.savedPOI[index];
                 $scope.savedPOI[index] = rowToSwap;
+                localStorageModel.update('favorite', $scope.savedPOI);
             }
         };
 
@@ -26,7 +26,18 @@ angular.module('citiesApp')
                 let rowToSwap = $scope.savedPOI[index + 1];
                 $scope.savedPOI[index + 1] = $scope.savedPOI[index];
                 $scope.savedPOI[index] = rowToSwap;
+                localStorageModel.update('favorite', $scope.savedPOI);
             }
+        };
+
+        $scope.saveChanges = function()
+        {
+            for (let i = 0; i < $scope.savedPOI.length; i++)
+            {
+                $scope.savedPOI[i].place = i;
+            }      
+
+           
         };
         
      }]);
