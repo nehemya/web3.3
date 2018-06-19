@@ -43,5 +43,14 @@ function($locationProvider, $routeProvider)  {
             templateUrl: 'components/Register/register.html',
             controller : 'registerCtrl'
         })
+        .when('/explore', {
+            templateUrl: 'components/PoiTable/poiTable.html',
+            controller : 'poiTableCtrl',
+            resolve: {
+                Pois: function(PoiService){
+                    return PoiService.getAllPoi();
+                }
+            }
+        })
         .otherwise({ redirectTo: '/' });
 }]);
