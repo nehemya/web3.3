@@ -1,8 +1,18 @@
 
 <html ng-app="citiesApp">
     <head><title>Cities App</title>
-              
-        <link rel="stylesheet" type="text/css" href="appStyle.css" />
+        
+        <!--meta-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!--bootstrap-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="appStyle.css">
         <!--   basic angular imports     -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
@@ -37,34 +47,45 @@
         
     </head>
     <body ng-controller="mainCtrl">
-         <!--   our navigator menu    -->
-        <div id="menu-bar">
-            <ul >
-                <li><a class="active" href="#/">Home</a></li>
-                <li><a href="#/about">About</a></li>
-                <li><a href="#/explore">Explore</a></li>
-                <li ng-show="!isLogged"><a href="#/login">Login</a></li>
-                <li ng-show="!isLogged"><a href="#/register">Register</a></li>
-                <li ng-show"isLogged" ><a href="#/favorite">Favorites</a></li>
-                <li ng-show="isLogged" >Hello {{username}} (*_*)</li>
-                <li ng-show="!isLogged" >Hello guest</li>
-            </ul>
-        </div>
-        
-            
-        <br>
-        <br>
-
-        <div  ng-view></div> <!--   our injected view     -->
-
-        
-
-
-
-
-         
-        
- 
+              
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                                <a class="nav-link" href="#/about">About</a>
+                        </li>
+                        <li class="nav-item">
+                                <a class="nav-link" href="#/explore">Explore</a>
+                        </li>
+                        <li ng-show="!isLogged" class="nav-item">
+                            <a href="#/login" class="nav-link">Login</a>
+                        </li>
+                        <li ng-show="!isLogged" class="nav-item">
+                                <a href="#/register" class="nav-link">Register</a>
+                        </li>
+                        <li ng-show="isLogged" class="nav-item">
+                                <a href="#/favorite" class="nav-link">Favorites</a>
+                        </li>
+                        <li ng-show="!isLogged" class="nav-item">
+                                <a href="#/favorite" class="nav-link">Favorites</a>
+                        </li>
+                        <li ng-show="!isLogged" class="nav-item">
+                               <a href="" class="nav-link"> Hello guest</a>
+                        </li>
+                        <li ng-show="isLogged" class="nav-item">
+                                <a class="nav-link"> Hello {{username}} (*_*)</a>
+                         </li>
+                    </ul>
+                </div>
+            </nav>
+            <br>
+            <br>
+            <div  ng-view></div> <!--   our injected view     -->
+       
+      
     </body>
  </html>   
     

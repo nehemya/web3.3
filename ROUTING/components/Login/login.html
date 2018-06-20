@@ -1,9 +1,9 @@
 
-<div ng-controller="loginCtrl" class="content">
-    <form name="loginForm" ng-submit="submitLogin()" novalidate> <!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
+<div ng-controller="loginCtrl" class="text-center">
+    <form class="form-signin" name="loginForm" ng-submit="submitLogin()" novalidate> <!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
         <div>
-            <label>Username:</label>
-            <input type="text" name="UserName" ng-model="user.UserName" ng-required="true" ng-minlength="3" ng-maxlength="8" ng-pattern="/^[a-zA-Z]*$/"/>
+            <input class="form-control" placeholder="Enter Username" type="text" name="UserName" ng-model="user.UserName" ng-required="true" ng-minlength="3" ng-maxlength="8" ng-pattern="/^[a-zA-Z]*$/"/>
             <div ng-show="loginForm.UserName.$touched && loginForm.UserName.$error.required">
                 <small>Username is required</small>
             </div>
@@ -19,8 +19,8 @@
         </div>
  
         <div>
-            <label>Password:</label>
-            <input type="password" name="Password" ng-model="user.Password" ng-minlength="5" ng-maxlength="10" ng-required="true" ng-pattern="/^[a-zA-Z0-9]*$/" />
+            
+            <input placeholder="Password" class="form-control" type="password" name="Password" ng-model="user.Password" ng-minlength="5" ng-maxlength="10" ng-required="true" ng-pattern="/^[a-zA-Z0-9]*$/" />
             <!-- Set error messages for password field -->
             <div ng-show="loginForm.Password.$error.required && loginForm.Password.$touched">
                 <small>Password is required</small>
@@ -37,7 +37,7 @@
         </div>
 
     
-        <input type="submit" value="Submit" ng-disabled="loginForm.$invalid" />
+        <input type="submit" value="Submit" class="btn btn-lg btn-primary btn-block" ng-disabled="loginForm.$invalid" />
     
     </form>
 </div>

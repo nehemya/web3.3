@@ -19,7 +19,11 @@ angular.module('citiesApp').service('FavoriteService', ['$http', 'localStorageMo
             return $http.get(server_url + 'POI/save')
             .then(function(response){
                 self.serverData = response.data;
-                self.loclaData = response.data;
+                if (self.loclaData.length === 0)
+                {
+                    self.loclaData = response.data;
+                }
+                
                 return response.data;
             }, function(response)
             {
