@@ -66,6 +66,13 @@
   font-size: 1.8em;
 }
 
+.modal-pic
+{
+  width: 12vw;
+  height: 15vh;
+  
+}
+
 input[disabled="disabled"]{
   opacity: 0.4;
   cursor: not-allowed !important; 
