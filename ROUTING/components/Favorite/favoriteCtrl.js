@@ -55,24 +55,37 @@ angular.module('citiesApp')
 
         self.deleteFromServer = function()
         {
+            $http.defaults.headers.delete = {"Content-Type": "application/json;charset=utf-8"};
             for (let i = 0; i < self.serverData.length; i++)
             {
                 let poi = self.serverData[i];
                 if (-1 === $scope.savedPOI.indexOf(poi))
                 {
                     $http.delete(server_url + 'POI/save', poi);
+                    return $http({
+                        url: server_url + 'POI/save',
+                        method: 'delete', 
+                        data: poi
+                    })
+                    .then(function (param) {
+                        return param;
+                      }, function (param) {
+                        return param;
+                        });
                 }
             }
         };
 
         self.addToServer = function () {
-
             for (let i = 0; i < $scope.savedPOI.length; i++)
             {
                 let poi = $scope.savedPOI[i];
                 if (-1 === self.serverData.indexOf(poi))
                 {
-                    $http.post(server_url + 'POI/save/' + PoiName, poi);
+                    return $http.post(server_url + 'POI/save/' + PoiName, poi)
+                    .then(function (param) {
+                        return param;
+                      });
                 }
             }
           };
