@@ -60,17 +60,14 @@
                         <li class="nav-item">
                                 <a class="nav-link" href="#/explore">Explore</a>
                         </li>
+                        <li ng-show="isLogged" class="nav-item">
+                                <a href="#/favorite" class="nav-link">Favorites ({{nFav}})</a>
+                        </li>
                         <li ng-show="!isLogged" class="nav-item">
                             <a href="#/login" class="nav-link">Login</a>
                         </li>
                         <li ng-show="!isLogged" class="nav-item">
                                 <a href="#/register" class="nav-link">Register</a>
-                        </li>
-                        <li ng-show="isLogged" class="nav-item">
-                                <a href="#/favorite" class="nav-link">Favorites</a>
-                        </li>
-                        <li ng-show="!isLogged" class="nav-item">
-                                <a href="#/favorite" class="nav-link">Favorites</a>
                         </li>
                         <li ng-show="!isLogged" class="nav-item">
                                <a href="" class="nav-link"> Hello guest</a>

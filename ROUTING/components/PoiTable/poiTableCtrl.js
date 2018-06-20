@@ -11,6 +11,7 @@ angular.module('citiesApp')
         $scope.addFavorit = function(ev, p){
             $(ev.currentTarget).children().toggleClass("addFav");
             FavoriteService.addToFav(p);
+            $scope.$parent.$parent.nFav=FavoriteService.loclaData.length;
         }
 
 

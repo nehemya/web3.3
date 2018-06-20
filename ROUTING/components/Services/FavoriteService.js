@@ -34,13 +34,13 @@ angular.module('citiesApp').service('FavoriteService', ['$http', 'localStorageMo
         
     };
     self.addToFav = function(poi){
-        if(self.loclaData.includes(poi) == false){
+        if(!self.isFav(poi)){
             self.loclaData.push(poi);
         }
         else {
             for(var i = self.loclaData.length - 1; i >= 0; i--) {
-                if(self.loclaData[i] === poi) {
-                   array.splice(i, 1);
+                if(self.loclaData[i].PoiName === poi.PoiName) {
+                   self.loclaData.splice(i, 1);
                 }
             }
         }
@@ -48,8 +48,10 @@ angular.module('citiesApp').service('FavoriteService', ['$http', 'localStorageMo
     }
 
     self.isFav = function(poi){
-        if(self.loclaData.includes(poi) != false){
-            return true;
+        for(var i = self.loclaData.length - 1; i >= 0; i--) {
+            if(self.loclaData[i].PoiName === poi.PoiName) {
+               return true
+            }
         }
         return false;
     }

@@ -82,3 +82,7 @@ input.ng-touched.ng-invalid{
 small{
   color: red;
 }
+
+.addFav {
+  color: gold;
+}

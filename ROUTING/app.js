@@ -69,3 +69,4 @@ function($locationProvider, $routeProvider)  {
         })
         .otherwise({ redirectTo: '/' });
 }]);
+
