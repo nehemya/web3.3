@@ -9,9 +9,9 @@
 
         <hr>
         <h1>Explore:</h1>
-        <div ng-repeat="poi in randPois ">
-            <h2>{{poi.PoiName}}</h2>
-            <img ng-src="{{poi.PoiPic}}" alt="">           
+        <div ng-repeat="poi in randPois">
+            <h2 ng-click="showPoi(poi)">{{poi.PoiName}}</h2>
+            <img ng-src="{{poi.PoiPic}}" >           
         </div>
     
 
