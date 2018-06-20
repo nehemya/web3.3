@@ -18,7 +18,6 @@ angular.module('citiesApp').service('FavoriteService', ['$http', 'localStorageMo
         {
             return $http.get(server_url + 'POI/save')
             .then(function(response){
-                
                 self.serverData = response.data;
                 self.loclaData = response.data;
                 return response.data;
@@ -30,5 +29,26 @@ angular.module('citiesApp').service('FavoriteService', ['$http', 'localStorageMo
         }
         
     };
+    self.addToFav = function(poi){
+        if(self.loclaData.includes(poi) == false){
+            self.loclaData.push(poi);
+        }
+        else {
+            for(var i = self.loclaData.length - 1; i >= 0; i--) {
+                if(self.loclaData[i] === poi) {
+                   array.splice(i, 1);
+                }
+            }
+        }
+        
+    }
+
+    self.isFav = function(poi){
+        if(self.loclaData.includes(poi) != false){
+            return true;
+        }
+        return false;
+    }
+
 
 }]);

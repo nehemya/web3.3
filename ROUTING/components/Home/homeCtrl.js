@@ -1,7 +1,7 @@
 angular.module('citiesApp')
     .controller('homeCtrl',
-    ['$location', '$scope', '$http', 'localStorageModel','PoiService','poiModalService',
-    function ( $location, $scope, $http,localStorageModel , PoiService, poiModalService) {
+    ['$location', '$scope', '$http', 'localStorageModel','PoiService',
+    function ( $location, $scope, $http,localStorageModel , PoiService, ) {
         self=this; 
         let server_url='http://localhost:3000/';
         $scope.isLogged = $scope.$parent.isLogged;
