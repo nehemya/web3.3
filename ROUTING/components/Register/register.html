@@ -1,117 +1,157 @@
-<div ng-controller="registerCtrl" class="content">
-        <form name="registerForm" ng-submit="submitRegister()" novalidate> <!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
-            <div>
-                <label>Username:</label>
-                <input type="text" name="UserName" ng-model="user.UserName" ng-minlength="3" ng-maxlength="8" ng-required="true" ng-pattern="/^[a-zA-Z]*$/" />
-            </div>
-            <!-- Set error messages for username field -->
-            <div ng-show="registerForm.UserName.$error.required && registerForm.UserName.$touched">
-                <small>Username is required</small>
-            </div>
-            <div ng-show="registerForm.UserName.$error.minlength">
-                <small>Username must be at least 3 characters</small>
-            </div>
-            <div ng-show="registerForm.UserName.$error.maxlength">
-                <small>Username must be at most 8 characters</small>
-            </div>
-            <div ng-show="registerForm.UserName.$error.pattern">
-                <small>Username can contain only numbers</small>
-            </div>
+<div ng-controller="registerCtrl" class="container-fluid">
+        <form class="form-horizontal" name="registerForm" ng-submit="submitRegister()" novalidate> <!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
+            <fieldset>
+                <!--Form Name-->
+                <legend>Registration</legend>
 
-            <div>
-                <label>Password:</label>
-                <input type="password" name="Password" ng-model="user.Password" ng-minlength="5" ng-maxlength="10" ng-required="true" ng-pattern="/^[a-zA-Z0-9]*$/">
-            </div>
-             <!-- Set error messages for password field -->
-             <div ng-show="registerForm.Password.$error.required && registerForm.Password.$touched">
-                 <small>Password is required</small>
-             </div>
-             <div ng-show="registerForm.Password.$error.minlength">
-                <small>Password is too short</small>
-            </div>
-            <div ng-show="registerForm.Password.$error.maxlength">
-                <small>Password is too long</small>
-            </div>
-            <div ng-show="registerForm.Password.$error.pattern">
-                <small>Password can contains only letters and numbers </small>
-            </div>
-            
-            <div>
-                <label>First name:</label>
-                <input type="text" name="Fname" ng-model="user.FirstName"  ng-required="true" ng-pattern="/^[a-z ,.'-]+$/i">
-            </div>
-            <!-- Set error messages for First Name field -->
-            <div ng-show="registerForm.Fname.$error.required && registerForm.Fname.$touched">
-                <small>First Name is required</small>
-            </div>
-            <div ng-show="registerForm.Fname.$error.pattern">
-                <small>First name can contain only letters and whitespaces</small>
-            </div>
-            
-            <div>
-                <label>Last name:</label>
-                <input type="text" name="Lname" ng-model="user.LastName" required ng-pattern="/^[a-z ,.'-]+$/i">
-            </div>
-            <!-- Set error messages for First Name field -->
-            <div ng-show="registerForm.Lname.$error.required && registerForm.Lname.$touched">
-                <small>Last Name is required</small>
-            </div>
-            <div ng-show="registerForm.Lname.$error.pattern">
-                <small>Last name can contain only letters and whitespaces</small>
-            </div>
-            
-            <div>  
-                <label>Country:</label>
-                <select name="Country" ng-model="user.Country">
-                    <option ng-repeat="country in countryL" value="{{country}}">{{country}}</option>
-                </select>
-            </div>
-
-            <div>
-                <label>City:</label>
-                <input type="text" name="city" ng-model="user.City" ng-required="true">
-            </div>
-            <div ng-show="registerForm.city.$error.required && registerForm.city.$touched">
-                <small>City is required</small>
-            </div>
-          
-            <div>
-                <label>Email:</label>
-                <input type="email" name="Email" ng-model="user.Email" ng-required="ture">
-            </div>
-            <div ng-show="registerForm.Email.$error.required && registerForm.Email.$touched">
-                <small>City is required</small>
-            </div>
-            <div ng-show="registerForm.Email.$invalid && registerForm.Email.$touched">
-                <small>Enter a valid Email</small>
-            </div>
-            
-            <div>  
-                <label>Favorite categories:</label>
-                <div ng-repeat="cat in categoryL">
-                    <input type="checkbox" id="{{cat}}" ng-model="selected[cat]"   />
-                    <label>{{cat}}</label>
-
+                <!--Username-->
+                <div class="form-group">
+                        <label class="col-md-4 control-label" for="username">Username:</label>
+                        <div class="col-md-4">
+                            <input id="username" class="form-control input-md" type="text" name="UserName" ng-model="user.UserName" ng-minlength="3" ng-maxlength="8" ng-required="true" ng-pattern="/^[a-zA-Z]*$/" />
+                            <!-- Set error messages for username field -->
+                            <div ng-show="registerForm.UserName.$error.required && registerForm.UserName.$touched">
+                                <small>Username is required</small>
+                            </div>
+                            <div ng-show="registerForm.UserName.$error.minlength">
+                                <small>Username must be at least 3 characters</small>
+                            </div>
+                            <div ng-show="registerForm.UserName.$error.maxlength">
+                                <small>Username must be at most 8 characters</small>
+                            </div>
+                            <div ng-show="registerForm.UserName.$error.pattern">
+                                <small>Username can contain only numbers</small>
+                            </div>
+                        </div>
+                        
                 </div>
-            </div>
-            
-            <div>
-                    <label>Question 1:</label>
-                    <select name="Q1" ng-model="user.QPassword1">
-                        <option ng-repeat="q in Q1bank" value="{{q}}">{{q}}</option>
-                    </select>
-                    <input type="text" name="Q1ans" ng-model="user.Answer1" required>
-            </div>
-            <div>
-                    <label>Question 2:</label>
-                    <select name="Q2" ng-model="user.QPassword2">
-                        <option ng-repeat="q in Q2bank" value="{{q}}">{{q}}</option>
-                    </select>
-                    <input type="text" name="Q2ans" ng-model="user.Answer2" required>
-            </div>
-     
-        
-            <input type="submit" value="Submit" ng-disabled="registerForm.$invalid">
-        
+
+                <!--Password-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Password:</label>
+                    <div class="col-md-4">
+                        <input class="form-control input-md" type="password" name="Password" ng-model="user.Password" ng-minlength="5" ng-maxlength="10" ng-required="true" ng-pattern="/^[a-zA-Z0-9]*$/">
+                        <!-- Set error messages for password field -->
+                        <div ng-show="registerForm.Password.$error.required && registerForm.Password.$touched">
+                            <small>Password is required</small>
+                        </div>
+                        <div ng-show="registerForm.Password.$error.minlength">
+                            <small>Password is too short</small>
+                        </div>
+                        <div ng-show="registerForm.Password.$error.maxlength">
+                            <small>Password is too long</small>
+                        </div>
+                        <div ng-show="registerForm.Password.$error.pattern">
+                            <small>Password can contains only letters and numbers </small>
+                        </div>
+                    </div>
+                </div>
+
+                <!--First Name-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">First name:</label>
+                    <div class="col-md-4">
+                        <input class="form-control input-md" type="text" name="Fname" ng-model="user.FirstName"  ng-required="true" ng-pattern="/^[a-z ,.'-]+$/i">
+                        <!-- Set error messages for First Name field -->
+                        <div ng-show="registerForm.Fname.$error.required && registerForm.Fname.$touched">
+                            <small>First Name is required</small>
+                        </div>
+                        <div ng-show="registerForm.Fname.$error.pattern">
+                            <small>First name can contain only letters and whitespaces</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Last Name-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Last name:</label>
+                    <div class="col-md-4">
+                        <input class="form-control input-md" type="text" name="Lname" ng-model="user.LastName" required ng-pattern="/^[a-z ,.'-]+$/i">
+                        <!-- Set error messages for Last Name field -->
+                        <div ng-show="registerForm.Lname.$error.required && registerForm.Lname.$touched">
+                            <small>Last Name is required</small>
+                        </div>
+                        <div ng-show="registerForm.Lname.$error.pattern">
+                            <small>Last name can contain only letters and whitespaces</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Country-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Country:</label>
+                    <div class="col-md-4">
+                        <select class="form-control" name="Country" ng-model="user.Country">
+                            <option ng-repeat="country in countryL" value="{{country}}">{{country}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!--City-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">City:</label>
+                    <div class="col-md-4">
+                        <input class="form-control input-md" type="text" name="city" ng-model="user.City" ng-required="true">
+                        <!-- Set error messages for City field -->
+                        <div ng-show="registerForm.city.$error.required && registerForm.city.$touched">
+                            <small>City is required</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Email:</label>
+                    <div class="col-md-4">
+                        <input class="form-control input-md" type="email" name="Email" ng-model="user.Email" ng-required="true">
+                        <!-- Set error messages for Email field -->
+                        <div ng-show="registerForm.Email.$error.required && registerForm.Email.$touched">
+                            <small>Email is required</small>
+                        </div>
+                        <div ng-show="registerForm.Email.$error.email">
+                            <small>Enter a valid Email</small>
+                        </div>
+                    </div>
+                </div> 
+                
+                <!--Favorites-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Favorite categories:</label>
+                    <div class="col-md-4">
+                        <div class="checkbox">
+                            <div ng-repeat="cat in categoryL">
+                                <input type="checkbox" id="{{cat}}" ng-model="selected[cat]"   />
+                                    <label>{{cat}}</label>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <!--Question 1-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Question 1:</label>
+                    <div class="col-md-4">
+                        <select class="form-control" name="Q1" ng-model="user.QPassword1">
+                             <option ng-repeat="q in Q1bank" value="{{q}}">{{q}}</option>
+                        </select>
+                        <input class="form-control" placeholder="Answer1" type="text" name="Q1ans" ng-model="user.Answer1" required>
+                    </div>
+                </div>
+
+                <!--Question 2-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Question 2:</label>
+                    <div class="col-md-4">
+                        <select class="form-control" name="Q2" ng-model="user.QPassword2">
+                            <option ng-repeat="q in Q2bank" value="{{q}}">{{q}}</option>
+                        </select>
+                        <input class="form-control" placeholder="Answer2" type="text" name="Q2ans" ng-model="user.Answer2" required>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                        <input class="btn btn-lg btn-primary btn-block" type="submit" value="Submit" ng-disabled="registerForm.$invalid">
+                </div>
+                
+            </fieldset>
+
         </form>
-    </div>
+</div>

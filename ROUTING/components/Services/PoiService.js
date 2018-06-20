@@ -13,7 +13,6 @@ angular.module("citiesApp")
             .then(function(response)
             {
                 self.pois = response.data;
-                
             }, function(response) //only if the server fails to return anything
             {
                 alert("Connection problem with the back-end server");

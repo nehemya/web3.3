@@ -1,15 +1,10 @@
 <div ng-controller="logHomeCtrl" class="content">
-        <!--this will apear for not logged users-->
-        <div >
-            <h1>Point of interest that might interest you:</h1>
-            <div ng-repeat="poi in fav2Pois">
-                    <h2>{{poi.PoiName}}</h2>
-                    <!-- <img src="poi.PoiPic" alt="">            we have to add picturs-->
-                </div>  
+        
+       
     
-            <hr>
+            
 
-            <h1>Favorite history:</h1>
+            
             <div ng-repeat="poi in Hist">
                 <h2>{{poi.PoiName}}</h2>
                 <!-- <img src="poi.PoiPic" alt="">            we have to add picturs-->
@@ -19,5 +14,45 @@
         
         </div>
     </div>
-    
+
+<!--this will apear for logged users-->
+    <div ng-controller="logHomeCtrl">
+            <h1>Point of interest that might interest you:</h1>
+            <div class="album py-5 bg-light" >
+                <div class="container">
+                    <div class="row">
+                        <div style="margin: 5px;" class="card mb-4 box-shadow" ng-repeat="poi in fav2Pois">
+                            <img class="card-img-top" data-ng-src="{{poi.PoiPic}}" alt="Card image cap">
+                            <div class="card-body">
+                                <p class="card-text title" style="font-weight: bold; font-size: 1.8em; color: rgb(22, 22, 100);">{{poi.PoiName}}</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <h1>Favorite history:</h1>
+            <div class="album py-5 bg-light" >
+                <div class="container">
+                    <div class="row">
+                        <div style="margin: 5px;" class="card mb-4 box-shadow" ng-repeat="poi in Hist">
+                            <img class="card-img-top" data-ng-src="{{poi.PoiPic}}" alt="Card image cap">
+                            <div class="card-body">
+                                <p class="card-text title">{{poi.PoiName}}</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+    </div>   
     

@@ -1,20 +1,34 @@
-<div ng-controller="homeCtrl" class="content">
-    <!--this will apear for not logged users-->
-    <div >
-        <h1>Hello user, welcome to our new tour application. <br>
-            Please log in for maximum enjoyment.
-        </h1>
-        <input type="button" value="Login" ng-click="moveLog()">
-        <input type="button" value="Register" ng-click="moveReg()">
 
-        <hr>
-        <h1>Explore:</h1>
-        <div ng-repeat="poi in randPois ">
-            <h2>{{poi.PoiName}}</h2>
-            <img ng-src="{{poi.PoiPic}}" alt="">           
-        </div>
-    
+ <!--this will apear for not logged users-->
+ <main role="main">
+     <section class="jumbotron text-center">
+         <div class="container-fluid">
+            <h1 class="jumbotron-heading">
+                Hello user!
+            </h1>
+            <p class="lead text-muted"> welcome to our new tour application. Please log in for maximum enjoyment.</p>
+            <p>
+                <input type="button" class="btn btn-primary my-2" value="Login" ng-click="moveLog()">
+                <input type="button" class="btn btn-primary my-2" value="Register" ng-click="moveReg()">
+            </p>
+         </div>
+     </section>
 
-    </div>
-</div>
-
+     <div class="album py-5 bg-light" >
+         <div class="container">
+             <div class="row">
+                    <div style="margin: 5px;" class="card mb-4 box-shadow" ng-repeat="poi in randPois">
+                        <img class="card-img-top" data-ng-src="{{poi.PoiPic}}" alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text title">{{poi.PoiName}}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                         <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    </div>
+                            </div>
+                        </div>
+                    </div> 
+             </div>
+         </div>
+     </div>
+ </main>

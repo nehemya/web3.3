@@ -1,25 +1,36 @@
-<div ng-controller="favoriteCtrl" class="content">
-    <table>
-        <thead>
-            <tr>
-                <td>POI name:</td>
-                <td>Category:</td>
-                <td>Rating:</td>
-                <td>Change Order</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="poi in savedPOI" ng-click="" id="{{poi}}">
-                <td>{{poi.PoiName}}</td>
-                <td>{{poi.Category}}</td>
-                <td>{{poi.Rating}}</td>
-                <td>
-                    <button ng-click="moveUp($index)">Move Up</button>
-                    <button ng-click="moveDown($index)">Move Down</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-    <button ng-click="saveChanges()">Save Changes</button>
+<div class="container-fluid" ng-controller="favoriteCtrl">
+    <div class="row">
+        <div class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <h2 class="text-center">Favorites:</h2>
+            <div class="table-responsive">
+                    <table class="table table-striped table-sm">
+                            <thead>
+                                     <tr>
+                                        <td>POI name:</td>
+                                        <td>Category:</td>
+                                        <td>Rating:</td>
+                                        <td>Change Order</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="poi in savedPOI" ng-click="" id="{{poi}}">
+                                        <td>{{poi.PoiName}}</td>
+                                        <td>{{poi.Category}}</td>
+                                        <td>{{poi.Rating}}</td>
+                                        <td>
+                                            <button class="btn btn-lg btn-primary" ng-click="moveUp($index)">Move Up</button>
+                                            <button class="btn btn-lg btn-primary" ng-click="moveDown($index)">Move Down</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                    </table>
+            </div>
+        </div>
+    </div>
+        
+    <div class="row"> 
+            <div class="col-md-9 ml-sm-auto col-lg-10 px-4">   
+                <button class="btn btn-lg btn-primary" ng-click="saveChanges()">Save Changes</button>
+            </div>
+     </div>
 </div>

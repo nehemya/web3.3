@@ -20,7 +20,11 @@ angular.module('citiesApp').service('FavoriteService', ['$http', 'localStorageMo
             .then(function(response){
                 
                 self.serverData = response.data;
-                self.loclaData = response.data;
+                if (self.loclaData.length === 0)
+                {
+                    self.loclaData = response.data;
+                }
+                
                 return response.data;
             }, function(response)
             {
