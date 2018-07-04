@@ -19,7 +19,8 @@
                 </div>
             </div>
             <hr>
-            <h1>Favorite history:</h1>
+            <h1 ng-show="Hist.length !== 0">Favorite history:</h1>
+            <h1 ng-show="Hist.length === 0">You didn't saved any POI</h1>
             <div class="album py-5 bg-light" >
                 <div class="container">
                     <div class="row">

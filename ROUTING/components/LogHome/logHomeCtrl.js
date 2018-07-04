@@ -8,6 +8,4 @@ angular.module('citiesApp')
         $scope.fav2Pois = PoiService.popCat;
         $scope.Hist = PoiService.last2Hist;
         
-        
-        
     }]);
