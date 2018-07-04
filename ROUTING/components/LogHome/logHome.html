@@ -5,14 +5,29 @@
                 <div class="container">
                     <div class="row">
                         <div style="margin: 5px;" class="card mb-4 box-shadow" ng-repeat="poi in fav2Pois">
-                            <img class="card-img-top" data-ng-src="{{poi.PoiPic}}" alt="Card image cap">
+                            <img class="card-img-top" data-ng-src="{{poi.PoiPic}}" alt="Card image cap" ng-click="getPoi(poi)" class="img-thumbnail" href="#{{$index}}-modal" data-toggle="modal">
                             <div class="card-body">
                                 <p class="card-text title" style="font-weight: bold; font-size: 1.8em; color: rgb(22, 22, 100);">{{poi.PoiName}}</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                <div id="{{$index}}-modal" class="modal">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    
+                                                    <h4 class="modal-title text-left">{{poi.PoiName}}</h4>
+                                                </div>
+                                                <div class="modal-body text-center">
+                                                    <img ng-src="{{poi.PoiPic}}" class="modal-pic img-rounded"></img>
+                                                    <p>Rating: {{poi.Rating}}</p>
+                                                    <p>Num Of Ranks: {{poi.numOfRanks}}</p>
+                                                    <p>{{poi.desc}}</p>
+                                                    <p>Num Of Views: {{poi.numOfViews}}</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
                             </div>
                         </div> 
                     </div>
@@ -25,14 +40,29 @@
                 <div class="container">
                     <div class="row">
                         <div style="margin: 5px;" class="card mb-4 box-shadow" ng-repeat="poi in Hist">
-                            <img class="card-img-top" data-ng-src="{{poi.PoiPic}}" alt="Card image cap">
+                            <img class="card-img-top" data-ng-src="{{poi.PoiPic}}" ng-click="getPoi(poi)" class="img-thumbnail" href="#{{$index}}-modal" data-toggle="modal" alt="Card image cap">
                             <div class="card-body">
                                 <p class="card-text title">{{poi.PoiName}}</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                <div id="{{$index}}-modal" class="modal">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    
+                                                    <h4 class="modal-title text-left">{{poi.PoiName}}</h4>
+                                                </div>
+                                                <div class="modal-body text-center">
+                                                    <img ng-src="{{poi.PoiPic}}" class="modal-pic img-rounded"></img>
+                                                    <p>Rating: {{poi.Rating}}</p>
+                                                    <p>Num Of Ranks: {{poi.numOfRanks}}</p>
+                                                    <p>{{poi.desc}}</p>
+                                                    <p>Num Of Views: {{poi.numOfViews}}</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
                             </div>
                         </div> 
                     </div>
