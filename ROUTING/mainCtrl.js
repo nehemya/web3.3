@@ -13,6 +13,18 @@ angular.module('citiesApp')
             $scope.nFav = 0;
     
         }
+
+        $scope.logout = function () {
+            if(localStorageModel.get('token')){
+                localStorageModel.update('token', null);
+                localStorageModel.update('username',null);
+            }
+            else{
+                localStorageModel.add('token', null);
+                localStorageModel.add('username',null);
+            }
+            $scope.isLogged = false;
+          };
         
 
     }]);
