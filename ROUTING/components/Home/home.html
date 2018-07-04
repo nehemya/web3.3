@@ -17,13 +17,32 @@
      <div class="album py-5 bg-light" >
          <div class="container">
              <div class="row">
-                    <div style="margin: 5px;" class="card mb-4 box-shadow" ng-repeat="poi in randPois">
-                        <img class="card-img-top" data-ng-src="{{poi.PoiPic}}" alt="Card image cap">
+                    <div style="margin: 5px;" class="card mb-4 box-shadow" ng-repeat="p in randPois">
+                        <img class="card-img-top" data-ng-src="{{p.PoiPic}}" ng-click="getPoi(p)" class="img-thumbnail" href="#{{$index}}-modal" data-toggle="modal" alt="Card image cap">
                         <div class="card-body">
-                            <p class="card-text title">{{poi.PoiName}}</p>
+                            <p class="card-text title">{{p.PoiName}}</p>
                             <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                         <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                         <div id="{{$index}}-modal" class="modal">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            
+                                                            <h4 class="modal-title text-left">{{p.PoiName}}</h4>
+                                                        </div>
+                                                        <div class="modal-body text-center">
+                                                            <img ng-src="{{p.PoiPic}}" class="modal-pic img-rounded"></img>
+                                                            <p>Rating: {{p.Rating}}</p>
+                                                            <p>Num Of Ranks: {{p.numOfRanks}}</p>
+                                                            <p>{{p.desc}}</p>
+                                                            <p>Num Of Views: {{p.numOfViews}}</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                     </div>
                             </div>
                         </div>
