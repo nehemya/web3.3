@@ -1,12 +1,13 @@
 angular.module("citiesApp")
-    .service('PoiService', ['$http','setHeadersToken','localStorageModel',
-     function($http, setHeadersToken,localStorageModel) {
+    .service('PoiService', ['$http','setHeadersToken','localStorageModel','$location',
+     function($http, setHeadersToken,localStorageModel, $location) {
         var self = this;
         self.pois="";
         let server_url = 'http://localhost:3000/';
         self.rand3poi = [];
         self.popCat = [];
         self.last2Hist = [];
+        self.isLogged = false;
 
         self.getAllPoi = function (){
             $http.get(server_url + "POI/",{params:{poiName:"All"} } )
@@ -59,9 +60,15 @@ angular.module("citiesApp")
             }
             else{
                setHeadersToken.set(localStorageModel.get('token')); 
-            }
-            return $http.get(server_url + "POI/popularCategory")
+               return $http.get(server_url + "POI/popularCategory")
                 .then(function(response){
+                    if(response.data.success===false){
+                        self.deleteToken();
+                        setHeadersToken.set("");
+                        $scope.$parent.$parent.isLogged=false;
+                        
+                        return response;
+                    }
                     self.popCat[0] = response.data[0][0];
                     self.popCat[1] = response.data[1][0];
                     return response;
@@ -70,6 +77,9 @@ angular.module("citiesApp")
                         return response;
                 }
             );
+            }
+            return self.isLogged=false;
+            
         };
 
         self.logHistory = function(){
@@ -78,9 +88,14 @@ angular.module("citiesApp")
             }
             else{
                setHeadersToken.set(localStorageModel.get('token')); 
-            }
-            return $http.get(server_url + "POI/save/userLast2")
+               return $http.get(server_url + "POI/save/userLast2")
                 .then(function(response){
+                    if(response.data.success===false){
+                        self.deleteToken();
+                        setHeadersToken.set("");
+                        $scope.$parent.$parent.isLogged=false;
+                        return response;
+                    }
                     self.last2Hist[0] = response.data[0];
                     self.last2Hist[1] = response.data[1];
                     return response;
@@ -89,6 +104,9 @@ angular.module("citiesApp")
                         return response;
                 }
             );
+            }
+            return self.isLogged=false;
+            
         };
 
         self.getPoiByName = function(name){
@@ -99,6 +117,17 @@ angular.module("citiesApp")
                 }
             }
             return;
+        };
+
+        self.deleteToken = function(){
+            if(localStorageModel.get('token')){
+                localStorageModel.update('token', null);
+                localStorageModel.update('username',null);
+            }
+            else{
+                localStorageModel.add('token', null);
+                localStorageModel.add('username',null);
+            }
         };
 
 
