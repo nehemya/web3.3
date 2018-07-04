@@ -25,6 +25,19 @@ angular.module('citiesApp')
             }
             $scope.isLogged = false;
           };
-        
+
+          $scope.getPoi = function(poi)
+        {
+            poi.numOfViews += 1;
+            return $http.get(server_url + 'POI/', {params:{poiName:poi.PoiName} })
+            .then(function (response) {
+
+                poi=response.data;
+
+              }, function(response){
+                alert("Connection problem with the back-end server");
+                return response;
+              });
+        }; 
 
     }]);

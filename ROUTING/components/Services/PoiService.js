@@ -66,7 +66,6 @@ angular.module("citiesApp")
                         self.popCat[0] = response.data[0][0];
                         self.popCat[1] = response.data[1][0];
                     
-                    
                     return response;
                 },function(response){
                     alert("Connection problem with the back-end server");
