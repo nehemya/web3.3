@@ -1,7 +1,7 @@
 angular.module('citiesApp')
     .controller('logHomeCtrl',
-    ['$location', '$scope', '$http', 'localStorageModel','PoiService','setHeadersToken',
-    function ( $location, $scope, $http, localStorageModel , PoiService, setHeadersToken) {
+    ['$location', '$scope', '$http', 'localStorageModel','PoiService','setHeadersToken', 'FavoriteService',
+    function ( $location, $scope, $http, localStorageModel , PoiService, setHeadersToken, FavoriteService) {
         self=this; 
         let server_url='http://localhost:3000/';
         $scope.isLogged = $scope.$parent.isLogged;
@@ -29,6 +29,13 @@ angular.module('citiesApp')
                 alert("Connection problem with the back-end server");
                 return response;
               });
+        };
+
+        $scope.addFavorit = function (ev, poi) {
+            $(ev.currentTarget).children().toggleClass("addFav");
+            poi.date = new Date().toISOString();
+            FavoriteService.addToFav(poi);
+            $scope.$parent.$parent.nFav = FavoriteService.loclaData.length;
         };
         
     }]);

@@ -39,7 +39,9 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-default" ng-click="addFavorit($event, p)"></button>
+                                                    <button ng-click="addFavorit($event, p)" style="background: none; border: none;">
+                                                            <span class="fas fa-bookmark" style="font-size:35px;" ng-class="{'addFav': isFav(p)}"></span>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>

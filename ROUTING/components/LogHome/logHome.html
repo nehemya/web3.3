@@ -24,6 +24,9 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    <button ng-click="addFavorit($event, poi)" type="button" class="btn btn-default">
+                                                        <span class="fas fa-bookmark" style="font-size:35px;" ng-class="{'addFav': isFav(poi)}"></span>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -59,6 +62,9 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    <button ng-click="addFavorit($event, poi)" type="button" class="btn btn-default">
+                                                            <span class="fas fa-bookmark" style="font-size:35px;" ng-class="{'addFav': isFav(poi)}"></span>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
