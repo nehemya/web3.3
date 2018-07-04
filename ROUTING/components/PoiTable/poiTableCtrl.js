@@ -6,9 +6,6 @@ angular.module('citiesApp')
         $scope.isFav = FavoriteService.isFav;
         let server_url='http://localhost:3000/';
         
-
-        //todo
-
         $scope.addFavorit = function(ev, p){
             $(ev.currentTarget).children().toggleClass("addFav");
             FavoriteService.addToFav(p);
