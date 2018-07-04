@@ -4,14 +4,15 @@ angular.module('citiesApp')
         var self=this;
         $scope.Pois = PoiService.pois;
         $scope.isFav = FavoriteService.isFav;
+        $scope.isLogged = $scope.$parent.isLogged;
         let server_url='http://localhost:3000/';
         
         $scope.addFavorit = function(ev, p){
             $(ev.currentTarget).children().toggleClass("addFav");
             p.date = new Date().toISOString();
             FavoriteService.addToFav(p);
-            $scope.$parent.$parent.nFav=FavoriteService.loclaData.length;
-        }
+            $scope.$parent.$parent.$parent.nFav=FavoriteService.loclaData.length;
+        };
 
         $scope.getPoi = function(poi)
         {

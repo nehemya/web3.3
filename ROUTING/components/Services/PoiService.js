@@ -62,23 +62,21 @@ angular.module("citiesApp")
                setHeadersToken.set(localStorageModel.get('token')); 
                return $http.get(server_url + "POI/popularCategory")
                 .then(function(response){
-<<<<<<< HEAD
                     if(response.data.success===false){
                         self.deleteToken();
                         setHeadersToken.set("");
-                        $scope.$parent.$parent.isLogged=false;
-                        
-                        return response;
+                        //$scope.$parent.$parent.isLogged=false;
                     }
                     self.popCat[0] = response.data[0][0];
                     self.popCat[1] = response.data[1][0];
-=======
-                    
-                        self.popCat[0] = response.data[0][0];
-                        self.popCat[1] = response.data[1][0];
-                    
->>>>>>> c8868de238c86b50a17980037e464daae5c8963f
-                    return response;
+                    return $http.get(server_url + 'POI/save')
+                        .then(function (param) {
+                            self.numOfFavs = param.data.length;
+                            return param;
+                          }, function (param) {
+                            alert("Connection problem with the back-end server");
+                            return response;
+                        });
                 },function(response){
                     alert("Connection problem with the back-end server");
                         return response;
@@ -97,16 +95,12 @@ angular.module("citiesApp")
                setHeadersToken.set(localStorageModel.get('token')); 
                return $http.get(server_url + "POI/save/userLast2")
                 .then(function(response){
-<<<<<<< HEAD
                     if(response.data.success===false){
                         self.deleteToken();
                         setHeadersToken.set("");
                         $scope.$parent.$parent.isLogged=false;
                         return response;
                     }
-                    self.last2Hist[0] = response.data[0];
-                    self.last2Hist[1] = response.data[1];
-=======
                     if (response.data.length === 2)
                     {
                         self.last2Hist[0] = response.data[0];
@@ -117,7 +111,7 @@ angular.module("citiesApp")
                         self.last2Hist[0] = response.data[0];
                     }
                     
->>>>>>> c8868de238c86b50a17980037e464daae5c8963f
+                    
                     return response;
                 },function(response){
                     alert("Connection problem with the back-end server");

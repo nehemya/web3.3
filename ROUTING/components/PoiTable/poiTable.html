@@ -14,7 +14,7 @@
                               <th>Img</th>
                               <th>Category</th>
                              <th>Rating</th>
-                             <th>Favorit</th>
+                             <th ng-show="isLogged">Favorit</th>
                          </tr>
                          </thead>
                         <tbody>
@@ -39,6 +39,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-default" ng-click="addFavorit($event, p)"></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -50,7 +51,7 @@
                                 <td>
                                     {{p.Rating}}
                                 </td>
-                                <td>
+                                <td ng-show="isLogged">
                                         <button ng-click="addFavorit($event, p)" style="background: none; border: none;">
                                             <span class="fas fa-bookmark" style="font-size:35px;" ng-class="{'addFav': isFav(p)}"></span>
                                         </button>
