@@ -18,7 +18,7 @@ angular.module('citiesApp')
                     
                 }
                 else if(response.data==="login failed bad password/username"){
-                    alert("login failed bad password/username");
+                    alert("login failed bad username");
                    
                 }
                 else {
@@ -58,6 +58,9 @@ angular.module('citiesApp')
                 localStorageModel.add('username',null);
             }
         };
-
+        
+        $scope.getPas = function(){
+            $location.path('/rePass');
+        }
 
     }]);

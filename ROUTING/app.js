@@ -67,6 +67,12 @@ function($locationProvider, $routeProvider)  {
                 }
             }
         })
+        .when('/rePass', {
+            templateUrl: 'components/RestorePass/rePass.html',
+            controller : 'rePassCtrl',
+            
+        })
+
         .otherwise({ redirectTo: '/' });
 }]);
 
