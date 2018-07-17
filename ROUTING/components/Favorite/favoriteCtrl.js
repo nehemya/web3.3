@@ -16,7 +16,8 @@ angular.module('citiesApp')
             }      
 
             self.deleteFromServer();
-            self.addToServer();
+            //self.addToServer();
+            /*
             let data = {};
             data.pois = $scope.savedPOI;
             $http.post(server_url + 'POI/save', data)
@@ -27,6 +28,7 @@ angular.module('citiesApp')
                 alert("Connection problem with the back-end server");
                 return;
               });
+              */
         };
 
         $scope.moveUp = function(index)
@@ -57,30 +59,8 @@ angular.module('citiesApp')
         {
             $http.defaults.headers.delete = {"Content-Type": "application/json;charset=utf-8"};
             /*
-            for (let i = 0; i < self.serverData.length; i++)
-            {
-                let poi = self.serverData[i];
-                if (-1 === $scope.savedPOI.indexOf(poi))
-                {
-                    //$http.delete(server_url + 'POI/save', poi);
-                    return $http({
-                        url: server_url + 'POI/save',
-                        method: 'delete', 
-                        data: poi
-                    })
-                    .then(function (param) {
-                        return param;
-                      }, function (param) {
-                        return param;
-                        });
-                }
-            }
-            */
-
             angular.forEach(self.serverData, function(poi){
-                if (-1 === $scope.savedPOI.indexOf(poi))
-                {
-                    //$http.delete(server_url + 'POI/save', poi);
+                
                     return $http({
                         url: server_url + 'POI/save',
                         method: 'delete', 
@@ -91,33 +71,24 @@ angular.module('citiesApp')
                       }, function (param) {
                         return param;
                         });
-                }
+                
             });
+            */
+           return $http({
+               url: server_url + 'POI/save/deleteUserOrder',
+               method: 'delete',
+           })
+           .then(function (param) {
+               self.addToServer();
+               alert("Success");
+             },function (param) {
+                 alert("There was a problem with the server"); }).catch(function (param) {alert("There was a problem with the server");  });
         };
 
         self.addToServer = function () {
-            /*
-            for (let i = 0; i < $scope.savedPOI.length; i++)
-            {
-                let poi = $scope.savedPOI[i];
-                if (-1 === self.serverData.indexOf(poi))
-                {
-                    let url = server_url + 'POI/save/' + poi.PoiName;
-                    return $http.post(server_url + 'POI/save/' + poi.PoiName, poi)
-                    .then(function (param) {
-                        return param;
-                      }, function (param)
-                      {
-                          alert("Connection problem with the back-end server");
-                      });
-
-                }
-            }
-            */
-
+            
             angular.forEach($scope.savedPOI, function(poi){
-                if (-1 === self.serverData.indexOf(poi))
-                {
+                
                     let url = server_url + 'POI/save/' + poi.PoiName;
                     return $http.post(server_url + 'POI/save/' + poi.PoiName, poi)
                     .then(function (param) {
@@ -127,7 +98,7 @@ angular.module('citiesApp')
                           alert("Connection problem with the back-end server");
                       });
 
-                }
+                
             });
 
           };
