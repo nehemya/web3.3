@@ -1,10 +1,11 @@
 angular.module('citiesApp')
-    .controller('mainCtrl', ['$scope' ,'localStorageModel','$location',
-    function ($scope,localStorageModel,$location) {
+    .controller('mainCtrl', ['$scope' ,'localStorageModel','$location', 'PoiService', 'FavoriteService', 'PoiService',
+    function ($scope,localStorageModel,$location, PoiService, FavoriteService, PoiService) {
         self=this;
         if(localStorageModel.get('token')){
             $scope.isLogged = true;
             $scope.username = localStorageModel.get('username');
+            PoiService.isLogged = true;
             $location.path('/logHome');
         }
         else{
@@ -23,7 +24,10 @@ angular.module('citiesApp')
                 localStorageModel.add('token', null);
                 localStorageModel.add('username',null);
             }
+            FavoriteService.serverData = [];
+            FavoriteService.loclaData = [];
             $scope.isLogged = false;
+            PoiService.isLogged = false;
           };
 
           $scope.getPoi = function(poi)

@@ -1,7 +1,7 @@
 angular.module('citiesApp')
     .controller('homeCtrl',
     ['$location', '$scope', '$http', 'localStorageModel','PoiService',
-    function ( $location, $scope, $http,localStorageModel , PoiService, ) {
+    function ( $location, $scope, $http,localStorageModel , PoiService) {
         self=this; 
         let server_url='http://localhost:3000/';
         $scope.isLogged = $scope.$parent.isLogged;
@@ -17,7 +17,7 @@ angular.module('citiesApp')
         };
         
         $scope.showPoi = function(poi){
-            poiModalService.showPoi(poi)
-        }
+            poiModalService.showPoi(poi);
+        };
         
     }]);

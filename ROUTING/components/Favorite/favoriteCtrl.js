@@ -56,12 +56,13 @@ angular.module('citiesApp')
         self.deleteFromServer = function()
         {
             $http.defaults.headers.delete = {"Content-Type": "application/json;charset=utf-8"};
+            /*
             for (let i = 0; i < self.serverData.length; i++)
             {
                 let poi = self.serverData[i];
                 if (-1 === $scope.savedPOI.indexOf(poi))
                 {
-                    $http.delete(server_url + 'POI/save', poi);
+                    //$http.delete(server_url + 'POI/save', poi);
                     return $http({
                         url: server_url + 'POI/save',
                         method: 'delete', 
@@ -74,20 +75,61 @@ angular.module('citiesApp')
                         });
                 }
             }
+            */
+
+            angular.forEach(self.serverData, function(poi){
+                if (-1 === $scope.savedPOI.indexOf(poi))
+                {
+                    //$http.delete(server_url + 'POI/save', poi);
+                    return $http({
+                        url: server_url + 'POI/save',
+                        method: 'delete', 
+                        data: poi
+                    })
+                    .then(function (param) {
+                        return param;
+                      }, function (param) {
+                        return param;
+                        });
+                }
+            });
         };
 
         self.addToServer = function () {
+            /*
             for (let i = 0; i < $scope.savedPOI.length; i++)
             {
                 let poi = $scope.savedPOI[i];
                 if (-1 === self.serverData.indexOf(poi))
                 {
-                    return $http.post(server_url + 'POI/save/' + PoiName, poi)
+                    let url = server_url + 'POI/save/' + poi.PoiName;
+                    return $http.post(server_url + 'POI/save/' + poi.PoiName, poi)
                     .then(function (param) {
                         return param;
+                      }, function (param)
+                      {
+                          alert("Connection problem with the back-end server");
                       });
+
                 }
             }
+            */
+
+            angular.forEach($scope.savedPOI, function(poi){
+                if (-1 === self.serverData.indexOf(poi))
+                {
+                    let url = server_url + 'POI/save/' + poi.PoiName;
+                    return $http.post(server_url + 'POI/save/' + poi.PoiName, poi)
+                    .then(function (param) {
+                        return param;
+                      }, function (param)
+                      {
+                          alert("Connection problem with the back-end server");
+                      });
+
+                }
+            });
+
           };
            
      }]);

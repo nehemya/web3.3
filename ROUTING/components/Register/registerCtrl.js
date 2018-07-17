@@ -20,13 +20,22 @@ angular.module('citiesApp')
                 self.setCategory();
                 $http.post(server_url + 'Users/addUser', $scope.user)
                 .then(function (response) {
-                    if(response.status === 200)
+                    if (response.data === "This email is already taken" || response.data === "This username is already taken" || response.data === "Oops. Something went wrong")
                     {
+                        self.Categories = [];
+                        alert(response.data);
+                        return;
+                    }
+                    else if(response.status === 200)
+                    {
+                        self.Categories = [];
                         alert('Success');
                         $location.path('/login');
                     }
                   }, function(response){
+                    self.Categories = [];
                     alert("Connection problem with the back-end server");
+                    return;
                   });
             };
 

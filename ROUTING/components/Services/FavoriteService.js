@@ -50,7 +50,7 @@ angular.module('citiesApp').service('FavoriteService', ['$http', 'localStorageMo
     self.isFav = function(poi){
         for(var i = self.loclaData.length - 1; i >= 0; i--) {
             if(self.loclaData[i].PoiName === poi.PoiName) {
-               return true
+               return true;
             }
         }
         return false;

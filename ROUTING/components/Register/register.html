@@ -119,7 +119,7 @@
                     <div class="col-md-4">
                         <div class="checkbox">
                             <div ng-repeat="cat in categoryL">
-                                <input type="checkbox" id="{{cat}}" ng-model="selected[cat]"   />
+                                <input type="checkbox" id="{{$index}}" ng-model="selected[cat]"   />
                                     <label>{{cat}}</label>
                             </div>
                         </div>

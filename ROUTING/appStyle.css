@@ -73,6 +73,12 @@
   
 }
 
+.my-star
+{
+  width: auto;
+  height: auto;
+}
+
 input[disabled="disabled"]{
   opacity: 0.4;
   cursor: not-allowed !important; 
@@ -91,5 +97,5 @@ small{
 }
 
 .addFav {
-  color: gold;
+  color: red;
 }

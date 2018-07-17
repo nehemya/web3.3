@@ -14,7 +14,7 @@
                               <th>Img</th>
                               <th>Category</th>
                              <th>Rating</th>
-                             <th>Favorit</th>
+                             <th ng-show="isLogged">Favorit</th>
                          </tr>
                          </thead>
                         <tbody>
@@ -25,25 +25,27 @@
                                 <td>
                                     <img ng-src="{{p.PoiPic}}" style="width: 200px; height: 200px;" ng-click="getPoi(p)" class="img-thumbnail" href="#{{$index}}-modal" data-toggle="modal">
                                     <div id="{{$index}}-modal" class="modal">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        
-                                                        <h4 class="modal-title text-left">{{p.PoiName}}</h4>
-                                                    </div>
-                                                    <div class="modal-body text-center">
-                                                        <img ng-src="{{p.PoiPic}}" class="modal-pic img-rounded"></img>
-                                                        <p>Rating: {{p.Rating}}</p>
-                                                        <p>Num Of Ranks: {{p.numOfRanks}}</p>
-                                                        <p>{{p.desc}}</p>
-                                                        <p>Num Of Views: {{p.numOfViews}}</p>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                    </div>
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title text-left">{{p.PoiName}}</h4>
+                                                </div>
+                                                <div class="modal-body text-center">
+                                                    <img ng-src="{{p.PoiPic}}" class="modal-pic img-rounded"></img>
+                                                    <p>Rating: {{p.Rating}}</p>
+                                                    <p>Num Of Ranks: {{p.numOfRanks}}</p>
+                                                    <p>{{p.desc}}</p>
+                                                    <p>Num Of Views: {{p.numOfViews}}</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    <button ng-click="addFavorit($event, p)" style="background: none; border: none;">
+                                                            <span class="fas fa-bookmark" style="font-size:35px;" ng-class="{'addFav': isFav(p)}"></span>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
                                 </td>
                                 <td>
                                     {{p.Category}}
@@ -51,9 +53,9 @@
                                 <td>
                                     {{p.Rating}}
                                 </td>
-                                <td>
-                                        <button ng-click="addFavorit($event, p)" style="background: none; border: none;width: 15px !important;height:15px !important;">
-                                            <i class="glyphicon glyphicon-heart-empty" style="font-size:48px;width: 10px !important;height:10px !important;" ng-class="{'addFav': isFav(p)}"></i>
+                                <td ng-show="isLogged">
+                                        <button ng-click="addFavorit($event, p)" style="background: none; border: none;">
+                                            <span class="fas fa-bookmark" style="font-size:35px;" ng-class="{'addFav': isFav(p)}"></span>
                                         </button>
                                 </td>
                                 
