@@ -3,6 +3,7 @@ angular.module('citiesApp')
         function ($location, $scope, $http, localStorageModel, RegisterService) {
 
             self = this;
+            window.eden = $scope;
             let server_url='http://localhost:3000/';
             $scope.countryL = RegisterService.countries;
             $scope.categoryL = RegisterService.categories;
@@ -17,6 +18,12 @@ angular.module('citiesApp')
                     alert("You can choose only 2 to 4 favorite categories");
                     return;
                 }
+
+                if (!$scope.Q1bank.includes($scope.user.QPassword1) || !$scope.Q2bank.includes($scope.user.QPassword2)){
+                    alert('You must choose questions')
+                    return;
+                }
+
                 self.setCategory();
                 $http.post(server_url + 'Users/addUser', $scope.user)
                 .then(function (response) {
@@ -41,10 +48,11 @@ angular.module('citiesApp')
 
             self.buildCategory = function()
             {
+                self.Categories = [];
                for(let i = 0; i < $scope.categoryL.length; i++)
                {
                    let cat = $scope.categoryL[i];
-                   let element = document.getElementById(cat);
+                   let element = document.getElementById(i.toString() + "-cat");
                    if (element.checked)
                    {
                        self.Categories.push(cat);

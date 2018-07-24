@@ -43,10 +43,10 @@
                 <div class="container">
                     <div class="row">
                         <div style="margin: 5px;width: 278px;" class="card mb-4 box-shadow" ng-repeat="poi in Hist">
-                            <img class="card-img-top" data-ng-src="{{poi.PoiPic}}" ng-click="getPoi(poi)" class="img-thumbnail" href="#{{$index}}-modal" data-toggle="modal" alt="Card image cap">
+                            <img class="card-img-top" data-ng-src="{{poi.PoiPic}}" ng-click="getPoi(poi)" class="img-thumbnail" href="#{{$index+2}}-modal" data-toggle="modal" alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-text title" style=" font-weight: bold; font-size: 1.2em; color: rgb(22, 22, 100);">{{poi.PoiName}}</h5>
-                                <div id="{{$index}}-modal" class="modal">
+                                <div id="{{$index+2}}-modal" class="modal">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">

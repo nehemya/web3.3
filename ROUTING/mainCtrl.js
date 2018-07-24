@@ -6,6 +6,7 @@ angular.module('citiesApp')
             $scope.isLogged = true;
             $scope.username = localStorageModel.get('username');
             PoiService.isLogged = true;
+            FavoriteService.favoritePrep();
             $location.path('/logHome');
         }
         else{

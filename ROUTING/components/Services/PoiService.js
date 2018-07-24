@@ -2,7 +2,6 @@ angular.module("citiesApp")
     .service('PoiService', ['$http','setHeadersToken','localStorageModel','$location',
      function($http, setHeadersToken,localStorageModel, $location) {
         var self = this;
-        self.pois="";
         let server_url = 'http://localhost:3000/';
         self.rand3poi = [];
         self.popCat = [];
@@ -10,13 +9,15 @@ angular.module("citiesApp")
         self.isLogged = false;
 
         self.getAllPoi = function (){
-            $http.get(server_url + "POI/",{params:{poiName:"All"} } )
+            return $http.get(server_url + "POI/",{params:{poiName:"All"} } )
             .then(function(response)
             {
                 self.pois = response.data;
+                return response.data;
             }, function(response) //only if the server fails to return anything
             {
                 alert("Connection problem with the back-end server");
+                return response.data;
             });
         };
 

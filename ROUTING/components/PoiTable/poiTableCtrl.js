@@ -1,8 +1,8 @@
 angular.module('citiesApp')
-    .controller('poiTableCtrl', ['$scope', '$http', 'PoiService','FavoriteService',
-    function ($scope, $http, PoiService, FavoriteService) {
+    .controller('poiTableCtrl', ['$scope', '$http', 'PoiService','FavoriteService', 'Pois',
+    function ($scope, $http, PoiService, FavoriteService, Pois) {
         var self=this;
-        $scope.Pois = PoiService.pois;
+        $scope.Pois = Pois;
         $scope.isFav = FavoriteService.isFav;
         $scope.isLogged = $scope.$parent.isLogged;
         let server_url='http://localhost:3000/';

@@ -1,6 +1,6 @@
 angular.module('citiesApp')
-    .controller('loginCtrl', ['$location', '$scope', '$http','setHeadersToken', 'localStorageModel','PoiService', 
-    function ($location, $scope, $http, setHeadersToken, localStorageModel, PoiService) {
+    .controller('loginCtrl', ['$location', '$scope', '$http','setHeadersToken', 'localStorageModel','PoiService','FavoriteService',
+    function ($location, $scope, $http, setHeadersToken, localStorageModel, PoiService, FavoriteService) {
         self=this;
         let server_url='http://localhost:3000/';
         
@@ -28,6 +28,7 @@ angular.module('citiesApp')
                     $scope.$parent.$parent.isLogged=true;
                     self.addToken();
                     alert("success");
+                    FavoriteService.favoritePrep();
                     $location.path('/logHome');
                     PoiService.isLogged=true;
                     return response;
