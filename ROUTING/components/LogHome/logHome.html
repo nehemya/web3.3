@@ -4,10 +4,10 @@
             <div class="album py-5 bg-light" >
                 <div class="container">
                     <div class="row">
-                        <div style="margin: 5px;" class="card mb-4 box-shadow" ng-repeat="poi in fav2Pois">
+                        <div style="margin: 5px;width: 278px;" class="card mb-4 box-shadow" ng-repeat="poi in fav2Pois">
                             <img class="card-img-top" data-ng-src="{{poi.PoiPic}}" alt="Card image cap" ng-click="getPoi(poi)" class="img-thumbnail" href="#{{$index}}-modal" data-toggle="modal">
                             <div class="card-body">
-                                <p class="card-text title" style="font-weight: bold; font-size: 1.8em; color: rgb(22, 22, 100);">{{poi.PoiName}}</p>
+                                <h5 class="card-text title" style=" font-weight: bold; font-size: 1.2em; color: rgb(22, 22, 100);">{{poi.PoiName}}</h5>
                                 <div id="{{$index}}-modal" class="modal">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -42,10 +42,10 @@
             <div class="album py-5 bg-light" >
                 <div class="container">
                     <div class="row">
-                        <div style="margin: 5px;" class="card mb-4 box-shadow" ng-repeat="poi in Hist">
+                        <div style="margin: 5px;width: 278px;" class="card mb-4 box-shadow" ng-repeat="poi in Hist">
                             <img class="card-img-top" data-ng-src="{{poi.PoiPic}}" ng-click="getPoi(poi)" class="img-thumbnail" href="#{{$index}}-modal" data-toggle="modal" alt="Card image cap">
                             <div class="card-body">
-                                <p class="card-text title">{{poi.PoiName}}</p>
+                                <h5 class="card-text title" style=" font-weight: bold; font-size: 1.2em; color: rgb(22, 22, 100);">{{poi.PoiName}}</h5>
                                 <div id="{{$index}}-modal" class="modal">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
