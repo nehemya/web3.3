@@ -13,6 +13,7 @@ angular.module("citiesApp").service('RegisterService',['$http', function ($http)
             return $http.get(server_url + 'POI/category')
             .then(function(response)
             {
+                self.categories=[];
                 for (var index in response.data)
                 {
                 self.categories.push(response.data[index].CategoryName);

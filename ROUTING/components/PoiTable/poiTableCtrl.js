@@ -11,7 +11,7 @@ angular.module('citiesApp')
             $(ev.currentTarget).children().toggleClass("addFav");
             p.date = new Date().toISOString();
             FavoriteService.addToFav(p);
-            $scope.$parent.$parent.$parent.nFav=FavoriteService.loclaData.length;
+            $scope.$parent.nFav=FavoriteService.loclaData.length;
         };
 
         $scope.getPoi = function(poi)

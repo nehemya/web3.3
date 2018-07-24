@@ -3,12 +3,11 @@ angular.module('citiesApp')
         function ($location, $scope, $http, localStorageModel, RegisterService) {
 
             self = this;
-            window.eden = $scope;
             let server_url='http://localhost:3000/';
             $scope.countryL = RegisterService.countries;
             $scope.categoryL = RegisterService.categories;
-            $scope.Q1bank = ['What is your mothers name', 'What was your first car'];
-            $scope.Q2bank = ['How is your father name', 'Are you handsome'];
+            $scope.Q1bank = ['What is your mothers name?', 'What was your first car?'];
+            $scope.Q2bank = ['What is your father name?', 'Are you handsome?'];
             self.Categories = [];
 
             $scope.submitRegister = function () {

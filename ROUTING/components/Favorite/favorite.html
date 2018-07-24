@@ -3,6 +3,7 @@
         <div class="col-md-10 offset-md-1">
             <h2 class="text-center">Favorites:</h2>
             <button class="btn btn-lg btn-primary" ng-click="order = 'Category'">Order by category</button>
+            <button class="btn btn-lg btn-primary" ng-click="order = '-Rating'">Order by rating</button>
             <button class="btn btn-lg btn-primary" ng-click="order =''">Clear Sort</button>
             <div class="table-responsive">
                     <table class="table table-striped table-sm">
@@ -22,6 +23,7 @@
                                         <td>
                                             <button class="btn btn-lg btn-primary" ng-click="moveUp($index)">Move Up</button>
                                             <button class="btn btn-lg btn-primary" ng-click="moveDown($index)">Move Down</button>
+                                            <button class="btn btn-lg btn-primary" ng-click="addFavorit($event, poi)">Remove</button>
                                         </td>
                                     </tr>
                                 </tbody>

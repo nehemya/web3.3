@@ -102,5 +102,11 @@ angular.module('citiesApp')
             });
 
           };
+
+        $scope.addFavorit = function(ev, p){
+            p.date = new Date().toISOString();
+            FavoriteService.addToFav(p);
+            $scope.$parent.$parent.nFav=FavoriteService.loclaData.length;
+        };
            
      }]);
